@@ -1,0 +1,50 @@
+@import '../../assets/scss/variables';
+
+.home {
+  .title {
+    text-align: center;
+  }
+  
+  form {
+    margin: 50px 0;
+  }
+  
+  .actions {
+    margin-top: 4rem;
+    text-align: center;
+  
+    .looking-for-a-job {
+      margin-bottom: 10px;
+    }
+    
+    .are-you-employeer,
+    .looking-for-a-job {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+    
+    .are-you-employeer a,
+    .looking-for-a-job a {
+      color: $primary-color;
+      text-decoration: none;
+    }
+  }
+}
+
+@media (min-width: 700px) {
+  .home {
+    form {
+      .input-group {
+        display: inline-block;
+  
+        width: 49%;
+  
+        margin-bottom: 15px;      
+      }
+  
+      .input-group:first-of-type {
+        margin-right: 1%;
+      }
+    }
+  }
+}
