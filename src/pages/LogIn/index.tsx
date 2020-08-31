@@ -2,6 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import SimpleHeader from '../../components/SimpleHeader'
+import SmallContainer from '../../components/SmallContainer'
+import InputGroup from '../../components/InputGroup'
+import Button from '../../components/Button'
 
 import './styles.scss'
 
@@ -9,27 +12,33 @@ const LogIn = () => (
   <div className="login">
     <SimpleHeader />
 
-    <div className="container-small">
+    <SmallContainer>
       <h1 className='title'>Log In</h1>
 
-      <form action="#">
-        <div className="input-group">
-          <label htmlFor="email">Email</label>
-          <input type="email" id="email" />
-        </div>
+      <form>
+        <InputGroup
+          type='email'
+          id='email'
+          name='email'
+          label='Email'
+          value=''
+        />
 
-        <div className="input-group">
-          <label htmlFor="password">Password</label>
-          <input type="password" id="password" />
-        </div>
+        <InputGroup
+          type='password'
+          id='password'
+          name='password'
+          label='Password'
+          value=''
+        />
 
         <Link to="/forgot-password" className="forgot-password">Forgot Password?</Link>
 
-        <button type="button" className="button button-primary button-block">Log In</button>
+        <Button type='primary' isBlock={true} content='Log In' />
       </form>
 
       <p className="dont-have-account">Don&apos;t have an account? <Link to="/signup">Sign up</Link></p>
-    </div>
+    </SmallContainer>
   </div>
 )
 
