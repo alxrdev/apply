@@ -12,7 +12,7 @@ interface Props {
   required?: boolean
 }
 
-const InputGroup: React.FC<Props> = ({ id, label, ...otherProps }) => (
+const InputGroup: React.FC<Props> = ({ id, label, ...otherProps }: Props) => (
   <div className="input-group">
     <label htmlFor={ id }>{ label }</label>
     <input id={id} { ...otherProps } />

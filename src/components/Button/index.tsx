@@ -8,7 +8,7 @@ interface Props {
   content: string
 }
 
-const Button: React.FC<Props> = ({ type, isBlock, content }) => (
+const Button: React.FC<Props> = ({ type, isBlock, content }: Props) => (
   <button className={`button button-${type} ${isBlock ? 'button-block' : ''}`}>{ content }</button>
 )
 
