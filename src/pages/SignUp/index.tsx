@@ -2,6 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import SimpleHeader from '../../components/SimpleHeader'
+import SmallContainer from '../../components/SmallContainer'
+import InputGroup from '../../components/InputGroup'
+import SelectGroup from '../../components/SelectGroup'
+import Button from '../../components/Button'
 
 import './styles.scss'
 
@@ -9,43 +13,62 @@ const SignUp = () => (
   <div className="signup">
     <SimpleHeader />
 
-    <div className="container-small">
+    <SmallContainer>
       <h1 className='title'>Sign up for a free account!</h1>
 
-      <form action="#">
-        <div className="input-group">
-          <label htmlFor="name">Name</label>
-          <input type="text" id="name" />
-        </div>
+      <form>
+        <InputGroup
+          type='text'
+          id='name'
+          name='name'
+          label='Name'
+          value=''
+          required={true}
+        />
 
-        <div className="input-group">
-          <label htmlFor="email">Email</label>
-          <input type="email" id="email" />
-        </div>
+        <InputGroup
+          type='email'
+          id='email'
+          name='email'
+          label='Email'
+          value=''
+          required={true}
+        />
 
-        <div className="input-group">
-          <label htmlFor="password">Password</label>
-          <input type="password" id="password" />
-        </div>
+        <InputGroup
+          type='password'
+          id='password'
+          name='password'
+          label='Password'
+          value=''
+          required={true}
+        />
 
-        <div className="input-group">
-          <label htmlFor="confirmPassword">Repeat the password</label>
-          <input type="password" id="confirmPassword" />
-        </div>
+        <InputGroup
+          type='password'
+          id='confirmPassword'
+          name='confirmPassword'
+          label='Confirm Password'
+          value=''
+          required={true}
+        />
 
-        <div className="input-group">
-          <label htmlFor="role">I am a</label>
-          <select id="role">
-            <option value="user" selected>User</option>
-            <option value="employeer">Employeer</option>
-          </select>
-        </div>
+        <SelectGroup
+          id='role'
+          name='role'
+          label="I'm a"
+          value='user'
+          options={[
+            { value: 'user', text: 'User' },
+            { value: 'employeer', text: 'Employeer' }
+          ]}
+        />
 
-        <button type="button" className="button button-primary button-block">Sign Up</button>
+        <Button type='primary' content='Sign Up' isBlock={true} />
       </form>
 
       <p className="already-have-account">Already have an account? <Link to="login">Log In</Link></p>
-    </div>
+    </SmallContainer>
   </div>
 )
 
