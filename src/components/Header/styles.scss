@@ -3,6 +3,8 @@
 .header {
   width: 100%;
 
+  border: 1px solid $gray-light;
+
   .navbar {
     display: flex;
     flex-direction: row;

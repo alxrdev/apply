@@ -8,7 +8,7 @@ const Header: React.FC = ({ children }) => (
   <div className="header">
     <div className="navbar">
       <div className="logo">
-        <Link to="/index">
+        <Link to="/">
           <img src={logoImage} alt="Apply" />
         </Link>
       </div>
