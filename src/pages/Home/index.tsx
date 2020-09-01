@@ -38,7 +38,7 @@ const Home = () => (
       </form>
 
       <div className='actions'>
-        <p className='looking-for-a-job'>Are you looking for a job? Apply for one. <Link to='/signup'>Sign up</Link></p>
+        <p className='looking-for-a-job'>Are you looking for a job? Apply for one. <Link to='/login'>Log In</Link></p>
         <p className='are-you-employeer'>Are you an employeer? Advertise your job here. <Link to='/signup'>Sign up</Link></p>
       </div>
     </SmallContainer>
