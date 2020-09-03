@@ -11,3 +11,11 @@ export interface Job {
   jobType: string
   salary: number
 }
+
+export interface APIErrorResponse {
+  error_message: string
+  error_status_code: number
+  message: string
+  success: boolean
+  error_details?: any
+}

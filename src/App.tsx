@@ -1,17 +1,15 @@
 import React from 'react'
 
-import Routes from './Routes'
+import Routes from './routes'
 
-import './global.scss'
+import './App.scss'
 
-class App extends React.Component {
-  render () {
-    return (
-      <div className="page">
-        <Routes />
-      </div>
-    )
-  }
+const App = () => {
+  return (
+    <div className="page">
+      <Routes />
+    </div>
+  )
 }
 
 export default App

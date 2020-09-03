@@ -34,9 +34,19 @@
     &:focus {
       border-color: $primary-color-dark;
     }
+
+    &.error {
+      border-color: #db183f;
+    }
   }
 
   select {
     margin-top: 10px;
+  }
+
+  .error-message {
+    margin-top: 10px;
+    color: #db183f;
+    font-size: 1.3rem;
   }
 }
