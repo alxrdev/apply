@@ -9,11 +9,15 @@ import Button from '../Button'
 import './styles.scss'
 
 const JobDetails = () => {
-  const { activeJob } = useContext(ActiveJobContext)
+  const { activeJob, setActiveJob } = useContext(ActiveJobContext)
 
   if (!activeJob) return (null)
 
   const { title, employeer, description, address, jobType, salary } = activeJob
+
+  const handleCancel = () => {
+    setActiveJob(null)
+  }
 
   return (
     <div className="job-details active">
@@ -51,7 +55,7 @@ const JobDetails = () => {
 
         <div className="apply">
           <Button type='primary' isBlock={true} content='Apply Now' />
-          <Button type='dark' isBlock={true} content='Cancel' />
+          <Button type='dark' isBlock={true} content='Cancel' onClick={handleCancel} />
         </div>
       </div>
     </div>
