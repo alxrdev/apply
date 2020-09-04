@@ -1,75 +1,86 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
+import { FiArrowDown } from 'react-icons/fi'
 
 import './styles.scss'
+
+interface DropdownSection {
+  id: number
+  borderTop?: boolean
+  borderBottom?: boolean
+  options: Array<DropdowOption>
+}
 
 interface DropdowOption {
   text: string
   value: string
+  callback?: (value: string) => void
+  icon?: React.ReactElement
 }
 
 interface Props {
   label: string
-  options: Array<DropdowOption>
+  sections: Array<DropdownSection>
 }
 
-interface State {
-  isOpen: boolean
-}
+const Dropdown: React.FC<Props> = ({ label, sections }) => {
+  const [isOpen, setIsOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
 
-class Dropdown extends React.Component<Props, State> {
-  private refContainer: React.RefObject<HTMLDivElement> | null
+  useEffect(() => {
+    document.addEventListener('click', closeAllDropdowns, false)
+    return () => document.removeEventListener('click', closeAllDropdowns, false)
+  })
 
-  constructor (props: Props) {
-    super(props)
-
-    this.state = {
-      isOpen: false
-    }
-
-    this.refContainer = React.createRef<HTMLDivElement>()
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen)
   }
 
-  toggleDropdown = () => {
-    this.setState({ isOpen: !this.state.isOpen })
-  }
-
-  closeAllDropdowns = (event: MouseEvent) => {
-    const elements = Array.prototype.map.call(this.refContainer?.current?.children, (element) => element)
+  function closeAllDropdowns (event: MouseEvent) {
+    const elements = Array.prototype.map.call(dropdownRef.current?.children, (element) => element)
 
     const isThis = elements.includes(event.target)
 
-    if (!isThis && this.state.isOpen) {
-      this.setState({ isOpen: false })
+    if (!isThis && isOpen) {
+      setIsOpen(false)
     }
   }
 
-  componentDidMount () {
-    document.addEventListener('click', this.closeAllDropdowns, false)
-  }
-
-  componentWillUnmount () {
-    document.removeEventListener('click', this.closeAllDropdowns, false)
-  }
-
-  render () {
-    const { label, options } = this.props
-
-    return (
-      <div className="dropdown" ref={this.refContainer}>
-        <button
-          className="dropdown-button"
-          onClick={this.toggleDropdown}
-        >
-          { label }
-        </button>
-        <ul className={`dropdown-content ${this.state.isOpen ? 'dropdown-content-show' : ''}`}>
-          { options.map(option => (
-            <li key={option.value} className="dropdown-option">{ option.text }</li>
-          )) }
-        </ul>
+  return (
+    <div className="dropdown" ref={dropdownRef}>
+      <button
+        className="dropdown-button"
+        onClick={toggleDropdown}
+      >
+        <span>{ label }</span>
+        <FiArrowDown size={15} />
+      </button>
+      <div className={`dropdown-content ${isOpen ? 'dropdown-content-show' : ''}`}>
+        { sections.map(section => (
+          <div
+            key={section.id}
+            className={`dropdown-section ${section.borderTop ? 'top' : ''} ${section.borderBottom ? 'bottom' : ''}`}
+          >
+            <ul className="dropdown-section-content">
+              { section.options.map(option => (
+                <li
+                  key={option.value}
+                  className="dropdown-option"
+                  onClick={() => {
+                    if (option.callback !== undefined) {
+                      option.callback(option.value)
+                    }
+                  }}
+                >
+                  { option.icon }
+                  <span>{ option.text }</span>
+                </li>
+              )) }
+            </ul>
+          </div>
+        )) }
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default Dropdown

@@ -21,6 +21,7 @@ export const AuthProvider: React.FC = ({ children }) => {
       api.post('/refresh-token')
         .then(result => {
           console.log('User authenticated...')
+          console.log(result)
           const response = result.data.data as APIAuthResponse
           setUser(response.user)
           localStorage.setItem('@Apply:user', JSON.stringify(response.user))

@@ -5,6 +5,9 @@
   display: inline-block;
 
   .dropdown-button {
+    display: flex;
+    align-items: center;
+
     padding: .75rem 1.6rem;
   
     background: $gray-light;
@@ -22,15 +25,20 @@
     &:hover {
       filter: brightness(0.9);
     }
+
+    span {
+      margin-right: 5px;
+    }
   }
 
   .dropdown-content {
     display: none;
     position: absolute;
-    left: 0;
-    right: 0;
+    z-index: 30;
+
     width: max-content;
   
+    padding: .3rem 0;
     margin-top: 5px;
   
     background: #fff;
@@ -38,23 +46,52 @@
     border: 1px solid $gray-light;
     border-radius: 3px;
   
-    list-style: none;
     box-shadow: 3px 3px 15px hsla(0, 0%, 80%, 0.274);
 
-    .dropdown-option {
-      display: block;
-      padding: .75rem 10rem .75rem 1.6rem;
-    
-      color: $text-color;
-    
-      font-size: 1.3rem;
-      text-decoration: none;
-      
-      cursor: pointer;
-      transition: ease 0.3s;
+    .dropdown-section {
+      padding: .3rem 1rem;
 
-      &:hover {
-        background: $gray-light;
+      .dropdown-section-content {
+        list-style: none;
+        
+        .dropdown-option {
+          display: flex;
+          align-items: center;
+          
+          padding: .75rem;
+        
+          color: $text-color;
+        
+          font-size: 1.2rem;
+          text-decoration: none;
+
+          border-radius: 5px;
+          
+          cursor: pointer;
+          transition: ease 0.3s;
+  
+          &:hover {
+            background: $gray-light;
+          }
+          
+          svg {
+            margin-right: 5px;
+          }
+        }
+      }
+
+      &.top {
+        .dropdown-section-content {
+          padding-top: .6rem;
+          border-top: 1px solid $gray-light;
+        }
+      }
+
+      &.bottom {
+        .dropdown-section-content {
+          padding-bottom: .6rem;
+          border-bottom: 1px solid $gray-light;
+        }
       }
     }
   }

@@ -64,6 +64,24 @@
         }
       }
     }
+
+    .user {
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 100%;
+        max-width: 36px;
+        height: 36px;
+
+        margin-right: 5px;
+
+        background: $gray;
+
+        border: 1px solid $gray;
+        border-radius: 50%;
+      }
+    }
   }
 }
 

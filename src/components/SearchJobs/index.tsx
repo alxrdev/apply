@@ -37,28 +37,49 @@ class SearchJobs extends React.Component {
           <div className="filters">
             <Dropdown
               label='Sort By'
-              options={[
-                { value: 'createdAt', text: 'Date added' },
-                { value: 'salary', text: 'Salary' }
+              sections={[
+                {
+                  id: 0,
+                  borderTop: false,
+                  borderBottom: false,
+                  options: [
+                    { value: 'createdAt', text: 'Date added' },
+                    { value: 'salary', text: 'Salary' }
+                  ]
+                }
               ]}
             />
 
             <Dropdown
               label='Sort order'
-              options={[
-                { value: 'asc', text: 'min - max' },
-                { value: 'desc', text: 'max - min' }
+              sections={[
+                {
+                  id: 1,
+                  borderTop: false,
+                  borderBottom: false,
+                  options: [
+                    { value: 'asc', text: 'min - max' },
+                    { value: 'desc', text: 'max - min' }
+                  ]
+                }
               ]}
             />
 
             <Dropdown
               label='Job type'
-              options={[
-                { value: 'full-time', text: 'Full-time' },
-                { value: 'part-time', text: 'Part-time' },
-                { value: 'contract', text: 'Contract' },
-                { value: 'internship', text: 'Internship' },
-                { value: 'freelancer', text: 'Freelancer' }
+              sections={[
+                {
+                  id: 2,
+                  borderTop: false,
+                  borderBottom: false,
+                  options: [
+                    { value: 'full-time', text: 'Full-time' },
+                    { value: 'part-time', text: 'Part-time' },
+                    { value: 'contract', text: 'Contract' },
+                    { value: 'internship', text: 'Internship' },
+                    { value: 'freelancer', text: 'Freelancer' }
+                  ]
+                }
               ]}
             />
           </div>
