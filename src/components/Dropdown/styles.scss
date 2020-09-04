@@ -48,6 +48,8 @@
   
     box-shadow: 3px 3px 15px hsla(0, 0%, 80%, 0.274);
 
+    animation: dropdown 300ms;
+
     .dropdown-section {
       padding: .3rem 1rem;
 
@@ -98,5 +100,15 @@
 
   .dropdown-content-show {
     display: block;
+  }
+}
+
+@keyframes dropdown {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
