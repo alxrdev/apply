@@ -2,7 +2,7 @@ import React, { useState, useContext, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { FiBriefcase, FiDollarSign } from 'react-icons/fi'
 
-import { ActiveJobContext } from '../JobsDriectory/ActiveJobContext'
+import { ActiveJobContext } from '../JobsDriectory/ActiveJobProvider'
 import { Job } from '../../types'
 
 import './styles.scss'
