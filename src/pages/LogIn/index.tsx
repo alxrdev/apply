@@ -72,8 +72,8 @@ const LogIn = () => {
   }
 
   const handleChange = (stateChange: CallableFunction) => {
-    return (event: ChangeEvent<HTMLInputElement>) => {
-      stateChange(event.currentTarget.value)
+    return (value: string) => {
+      stateChange(value)
     }
   }
 

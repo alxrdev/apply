@@ -1,26 +1,24 @@
-import React, { ChangeEventHandler } from 'react'
+import React, { ChangeEvent, InputHTMLAttributes } from 'react'
 
 import './styles.scss'
 
-interface Props {
-  type: string
-  name: string
+interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
   label: string
   id: string
-  placeholder?: string
-  value: any
-  onChange?: ChangeEventHandler
-  required?: boolean
+  onChange?: (value: string) => void
   error?: string
 }
 
-const InputGroup: React.FC<Props> = ({ id, label, ...otherProps }: Props) => (
+const InputGroup: React.FC<Props> = ({ id, label, onChange, ...otherProps }: Props) => (
   <div className="input-group">
     <label htmlFor={ id }>{ label }</label>
 
     <input
       id={id}
       className={`${(otherProps.error && otherProps.error !== '') ? 'error' : ''}`}
+      onChange={(e: ChangeEvent<HTMLInputElement>) => {
+        if (onChange !== undefined) onChange(e.target.value)
+      }}
       { ...otherProps }
     />
 

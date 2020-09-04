@@ -27,6 +27,21 @@
 
     border: 1px solid $gray;
     border-radius: 17px;
+    outline: none;
     cursor: pointer;
+
+    &:focus {
+      border-color: $primary-color-dark;
+    }
+
+    &.error {
+      border-color: #db183f;
+    }
+  }
+
+  .error-message {
+    margin-top: 10px;
+    color: #db183f;
+    font-size: 1.3rem;
   }
 }
