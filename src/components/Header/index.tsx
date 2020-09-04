@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { FiLogOut, FiUser } from 'react-icons/fi'
 
 import { useAuth } from '../../services/auth'
 
@@ -9,7 +10,7 @@ import './styles.scss'
 import logoImage from '../../assets/img/logo.svg'
 
 const Header: React.FC = ({ children }) => {
-  const { user } = useAuth()
+  const { user, logOut } = useAuth()
 
   return (
     <div className="header">
@@ -39,7 +40,11 @@ const Header: React.FC = ({ children }) => {
                   borderTop: false,
                   borderBottom: true,
                   options: [
-                    { value: 'profile', text: 'Profile' }
+                    {
+                      value: 'profile',
+                      text: 'Profile',
+                      icon: <FiUser size={15} />
+                    }
                   ]
                 },
                 {
@@ -50,8 +55,9 @@ const Header: React.FC = ({ children }) => {
                     {
                       value: 'Log Out',
                       text: 'Log Out',
+                      icon: <FiLogOut size={15} />,
                       callback: (value: string) => {
-                        console.log('Logout...')
+                        logOut()
                       }
                     }
                   ]
