@@ -153,11 +153,12 @@
     
     .details  {
       position: fixed;
-      top: 0;
+      top: 50%;
       right: 0;
       left: 0;
+      transform: translateY(-50%);
   
-      width: 100%;
+      width: 95%;
       max-width: 449px;
   
       margin: 0 auto;
