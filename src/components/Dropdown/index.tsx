@@ -20,9 +20,10 @@ interface DropdowOption {
 interface Props {
   label: string
   sections: Array<DropdownSection>
+  callback?: (value: string) => void
 }
 
-const Dropdown: React.FC<Props> = ({ label, sections }) => {
+const Dropdown: React.FC<Props> = ({ label, sections, callback }) => {
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
@@ -68,6 +69,10 @@ const Dropdown: React.FC<Props> = ({ label, sections }) => {
                   onClick={() => {
                     if (option.callback !== undefined) {
                       option.callback(option.value)
+                    }
+
+                    if (callback !== undefined) {
+                      callback(option.value)
                     }
                   }}
                 >

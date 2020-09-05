@@ -1,6 +1,7 @@
 @import '../../assets/scss/variables';
 
 .input-group {
+  position: relative;
   width: 100%;
 
   display: flex;
@@ -40,9 +41,83 @@
     }
   }
 
+  .input-options {
+    position: absolute;
+    display: block;
+
+    width: 100%;
+
+    .input-list {
+      display: block;
+
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      z-index: 30;
+
+      list-style: none;
+
+      width: 100%;
+    
+      margin-top: 5px;
+    
+      background: #fff;
+    
+      border: 1px solid $gray-light;
+      border-radius: 3px;
+    
+      box-shadow: 3px 3px 15px hsla(0, 0%, 80%, 0.274);
+
+      animation: input-list 300ms;
+
+      .input-option {
+        display: block;
+        
+        padding: .75rem;
+      
+        color: $text-color;
+      
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-decoration: none;
+
+        border-radius: 5px;
+        
+        cursor: pointer;
+        transition: ease 0.3s;
+
+        &:hover {
+          background: $gray-light;
+        }
+      }
+    }
+
+    &.input-options-show {
+      display: block;
+    }
+  }
+
   .error-message {
     margin-top: 10px;
     color: #db183f;
     font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .input-list {
+    transform: translateY(21%);
+  }
+}
+
+@keyframes input-list {
+  from {
+    opacity: 0;
+    transform: scale(0)
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }

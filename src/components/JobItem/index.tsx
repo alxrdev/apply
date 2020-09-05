@@ -16,8 +16,6 @@ const JobItem: React.FC<Props> = ({ job }) => {
   const jobItemRef = useRef<HTMLDivElement>(null)
   const [active, setActive] = useState(false)
 
-  const { title, employeer, address, jobType, salary } = job
-
   useEffect(() => {
     document.addEventListener('click', deactiveAllJobs, false)
     return () => document.removeEventListener('click', deactiveAllJobs, false)
@@ -46,22 +44,22 @@ const JobItem: React.FC<Props> = ({ job }) => {
       ref={jobItemRef}
     >
       <div className="avatar">
-        <img src="https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/53685cff8c94982b0b74b40fc78a4dcf" alt={title} />
+        <img src="https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/53685cff8c94982b0b74b40fc78a4dcf" alt={job.title} />
       </div>
       <div className="job-content">
         <div className="title-employeer">
-          <h5>{ title }</h5>
-          <span><Link to='/'>{ employeer }</Link> <span>14 days ago</span></span>
+          <h5>{ job.title }</h5>
+          <span><Link to='/'>Apple Inc.</Link> <span>{ Intl.DateTimeFormat('pt-BR').format(new Date(job.createdAt)) }</span></span>
         </div>
         <div className="location">
-          <h5>{ address.city }, { address.state }</h5>
+          <h5>{ job.address.city }, { job.address.country }</h5>
           <span>
             <FiBriefcase size={15} />
-            <span>{ jobType }</span>
+            <span>{ job.jobType }</span>
           </span>
         </div>
         <div className="salary">
-          <h5>R$ { salary }</h5>
+          <h5>{ Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(job.salary) }</h5>
           <span>
             <FiDollarSign size={15} />
             <span>Per Month</span>

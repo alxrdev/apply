@@ -13,7 +13,8 @@ const JobDetails = () => {
 
   if (!activeJob) return (null)
 
-  const { title, employeer, description, address, jobType, salary } = activeJob
+  const { title, description, address, jobType, salary, createdAt } = activeJob
+  const employeer = 'Apple inc.'
 
   const handleCancel = () => {
     setActiveJob(null)
@@ -28,7 +29,7 @@ const JobDetails = () => {
           </div>
           <div className="title-employeer">
             <h5>{ title }</h5>
-            <span><Link to='/'>{ employeer }</Link> <span>14 days ago</span></span>
+            <span><Link to='/'>{ employeer }</Link> <span>{ Intl.DateTimeFormat('pt-BR').format(new Date(createdAt)) }</span></span>
           </div>
         </div>
 
@@ -38,7 +39,7 @@ const JobDetails = () => {
         </div>
 
         <div className="location">
-          <h5>{ address.city }, { address.state }</h5>
+          <h5>{ address.city }, { address.country }</h5>
           <span>
             <FiBriefcase size={15} />
             <span>{ jobType }</span>
@@ -46,7 +47,7 @@ const JobDetails = () => {
         </div>
 
         <div className="salary">
-          <h5>R$ { salary }</h5>
+          <h5>{ Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(salary) }</h5>
           <span>
             <FiDollarSign size={15} />
             <span>Per Month</span>
