@@ -44,15 +44,15 @@ const JobItem: React.FC<Props> = ({ job }) => {
       ref={jobItemRef}
     >
       <div className="avatar">
-        <img src="https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/53685cff8c94982b0b74b40fc78a4dcf" alt={job.title} />
+        <img src={ job.user.avatar } alt={job.title} />
       </div>
       <div className="job-content">
         <div className="title-employeer">
           <h5>{ job.title }</h5>
-          <span><Link to='/'>Apple Inc.</Link> <span>{ Intl.DateTimeFormat('pt-BR').format(new Date(job.createdAt)) }</span></span>
+          <span><Link to='/'>{ job.user.name }</Link> <span>{ Intl.DateTimeFormat('pt-BR').format(new Date(job.createdAt)) }</span></span>
         </div>
         <div className="location">
-          <h5>{ job.address.city }, { job.address.country }</h5>
+          <h5>{ job.address.city }, { job.address.state }</h5>
           <span>
             <FiBriefcase size={15} />
             <span>{ job.jobType }</span>

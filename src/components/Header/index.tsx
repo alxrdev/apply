@@ -33,7 +33,7 @@ const Header: React.FC = ({ children }) => {
             </>
           ) : (
             <div className="user">
-              <img src='https://avatars0.githubusercontent.com/u/42560570?s=460&u=4f4dcd43b0e10b622ff4fe376151532c63958429&v=4' alt={user.name} />
+              <img src={user.avatar} alt={user.name} />
               <Dropdown label={user.name.split(' ')[0]} sections={[
                 {
                   id: 0,

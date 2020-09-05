@@ -13,9 +13,6 @@ const JobDetails = () => {
 
   if (!activeJob) return (null)
 
-  const { title, description, address, jobType, salary, createdAt } = activeJob
-  const employeer = 'Apple inc.'
-
   const handleCancel = () => {
     setActiveJob(null)
   }
@@ -25,29 +22,29 @@ const JobDetails = () => {
       <div className="details">
         <div className="top">
           <div className="employeer-avatar">
-            <img src="https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/53685cff8c94982b0b74b40fc78a4dcf" alt={title} />
+            <img src={activeJob.user.avatar} alt={activeJob.title} />
           </div>
           <div className="title-employeer">
-            <h5>{ title }</h5>
-            <span><Link to='/'>{ employeer }</Link> <span>{ Intl.DateTimeFormat('pt-BR').format(new Date(createdAt)) }</span></span>
+            <h5>{ activeJob.title }</h5>
+            <span><Link to='/'>{ activeJob.user.name }</Link> <span>{ Intl.DateTimeFormat('pt-BR').format(new Date(activeJob.createdAt)) }</span></span>
           </div>
         </div>
 
         <div className="description">
           <h5>Description</h5>
-          <p>{ description }</p>
+          <p>{ activeJob.description }</p>
         </div>
 
         <div className="location">
-          <h5>{ address.city }, { address.country }</h5>
+          <h5>{ activeJob.address.city }, { activeJob.address.state }</h5>
           <span>
             <FiBriefcase size={15} />
-            <span>{ jobType }</span>
+            <span>{ activeJob.jobType }</span>
           </span>
         </div>
 
         <div className="salary">
-          <h5>{ Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(salary) }</h5>
+          <h5>{ Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(activeJob.salary) }</h5>
           <span>
             <FiDollarSign size={15} />
             <span>Per Month</span>

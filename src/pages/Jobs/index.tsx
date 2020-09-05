@@ -32,7 +32,8 @@ const Jobs = () => {
   }, [sortBy, sortOrder, jobType])
 
   function searhJobs () {
-    api.get(`/jobs?title=${what}&city=${where}&sortBy=${sortBy}&sortOrder=${sortOrder}&jobType=${jobType}`)
+    history.push(`/jobs?what=${what}&where=${where}&sortBy=${sortBy}&sortOrder=${sortOrder}&jobType=${jobType}`)
+    api.get(`/jobs?what=${what}&where=${where}&sortBy=${sortBy}&sortOrder=${sortOrder}&jobType=${jobType}`)
       .then(result => {
         const data = result.data as CollectionResponse<Job>
         setJobsResponse(data)
@@ -42,7 +43,6 @@ const Jobs = () => {
 
   const handleForm = (event: FormEvent) => {
     event.preventDefault()
-    history.push(`/jobs?what=${what}&where=${where}&sortBy=${sortBy}&sortOrder=${sortOrder}&jobType=${jobType}`)
     searhJobs()
   }
 
