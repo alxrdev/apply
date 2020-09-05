@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { FiBriefcase, FiDollarSign } from 'react-icons/fi'
 
 import { ActiveJobContext } from '../JobsDriectory/ActiveJobProvider'
@@ -10,8 +10,13 @@ import './styles.scss'
 
 const JobDetails = () => {
   const { activeJob, setActiveJob } = useContext(ActiveJobContext)
+  const history = useHistory()
 
   if (!activeJob) return (null)
+
+  const handleApply = () => {
+    history.push(`/apply/${activeJob.id}`)
+  }
 
   const handleCancel = () => {
     setActiveJob(null)
@@ -52,7 +57,7 @@ const JobDetails = () => {
         </div>
 
         <div className="apply">
-          <Button type='primary' isBlock={true} content='Apply Now' />
+          <Button type='primary' isBlock={true} content='Apply Now' onClick={handleApply} />
           <Button type='dark' isBlock={true} content='Cancel' onClick={handleCancel} />
         </div>
       </div>
