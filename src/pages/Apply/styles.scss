@@ -1,0 +1,85 @@
+@import '../../assets/scss/variables';
+
+.apply-to-job {
+  .apply {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 85vh;
+
+    .apply-content {
+      padding: 4rem 1.6rem;
+
+      border: 1px solid $gray-light;
+      border-radius: 17px;
+
+      box-shadow: 5px 3px 25px #cdcdcd;
+      
+      .job-info {
+        width: 100%;
+        text-align: center;
+      
+        .employeer-avatar {
+          width: 30%;
+          margin: 0 auto;
+          text-align: center;
+        
+          img {
+            width: 100%;
+            max-width: 110px;
+          
+            border: 1px solid $gray-light;
+            border-radius: 30px;
+          }
+        }
+      
+        .title-employeer {
+          margin-top: 10px;
+      
+          h5 {
+            display: block;
+      
+            font-size: 1.8rem;
+          }
+      
+          .employeer {
+            display: block;
+      
+            font-size: 1.6rem;
+          }
+      
+          .location {
+            display: block;
+      
+            color: $gray;
+      
+            font-size: 1.3rem;
+          }
+        }
+      }
+
+      .apply-box {
+        margin-top: 20px;
+        text-align: center;
+
+        h2 {
+          margin-bottom: 20px;
+          font-size: 1.6rem;
+        }
+
+        form {
+          .button-section {
+            max-width: 400px;
+
+            padding-top: 20px;
+            margin: 0 auto;
+            margin-top: 20px;
+
+            border-top: 1px solid $gray-light;
+          }
+        }
+      }
+    }
+  }
+}
