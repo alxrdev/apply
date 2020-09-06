@@ -4,6 +4,7 @@ import api from '../api'
 
 import AuthContext, { IAuthUser } from './AuthContext'
 import { APIErrorResponse } from '../../types'
+import { useCookies } from 'react-cookie'
 
 interface APIAuthResponse {
   user: IAuthUser
@@ -11,19 +12,20 @@ interface APIAuthResponse {
 }
 
 export const AuthProvider: React.FC = ({ children }) => {
+  const [cookies, setCookies, removeCookies] = useCookies(['@Apply:user'])
   const [user, setUser] = useState<IAuthUser | null>(null)
 
   useEffect(() => {
-    const user = localStorage.getItem('@Apply:user')
+    const userAuth = cookies['@Apply:user']
 
-    if (user) {
+    if (userAuth) {
       console.log('Trying to authenticate user...')
       api.post('/refresh-token')
         .then(result => {
           console.log('User authenticated...')
           const response = result.data.data as APIAuthResponse
           setUser(response.user)
-          localStorage.setItem('@Apply:user', JSON.stringify(response.user))
+          storeUserAuth(response.user)
         })
         .catch(_ => {
           setUser(null)
@@ -40,7 +42,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 
       setUser(response.user)
 
-      localStorage.setItem('@Apply:user', JSON.stringify(response.user))
+      storeUserAuth(response.user)
     } catch (error) {
       if (error.response) {
         const data: APIErrorResponse = error.response.data
@@ -57,8 +59,12 @@ export const AuthProvider: React.FC = ({ children }) => {
   }
 
   const logOut = (): void => {
-    localStorage.removeItem('@Apply:user')
+    removeCookies('@Apply:user')
     setUser(null)
+  }
+
+  const storeUserAuth = (user: IAuthUser): void => {
+    setCookies('@Apply:user', user.id, { path: '/' })
   }
 
   return (
