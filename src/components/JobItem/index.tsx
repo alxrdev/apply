@@ -49,7 +49,7 @@ const JobItem: React.FC<Props> = ({ job }) => {
       <div className="job-content">
         <div className="title-employeer">
           <h5>{ job.title }</h5>
-          <span><Link to='/'>{ job.user.name }</Link> <span>{ Intl.DateTimeFormat('pt-BR').format(new Date(job.createdAt)) }</span></span>
+          <span><Link to={`/user/${job.user.id}`}>{ job.user.name }</Link> <span>{ Intl.DateTimeFormat('pt-BR').format(new Date(job.createdAt)) }</span></span>
         </div>
         <div className="location">
           <h5>{ job.address.city }, { job.address.state }</h5>

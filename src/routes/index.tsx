@@ -10,6 +10,7 @@ import LogIn from '../pages/LogIn'
 import SignUp from '../pages/SignUp'
 import ForgotPassword from '../pages/ForgotPassword'
 import Apply from '../pages/Apply'
+import Profile from '../pages/Profile'
 
 const Routes = () => (
   <BrowserRouter>
@@ -22,6 +23,7 @@ const Routes = () => (
       <AuthRoute path='/forgot-password' component={ForgotPassword} />
 
       <ProtectedRoute path='/apply/:id' component={Apply} />
+      <ProtectedRoute path='/profile' component={Profile} />
     </Switch>
   </BrowserRouter>
 )

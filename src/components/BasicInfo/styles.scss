@@ -1,0 +1,68 @@
+@import '../../assets/scss/variables';
+
+.basic-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  .avatar {
+    width: 100%;
+    max-width: 100px;
+
+    img {
+      width: 100%;
+
+      border: 1px solid $gray;
+      border-radius: 30px;
+    }
+  }
+  
+  .infos {
+    max-width: 700px;
+    
+    padding: 1rem;
+
+    list-style: none;
+
+    .name {
+      h1 {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+      }
+    }
+
+    .occupation-area,
+    .location,
+    .bio {
+      display: flex;
+      align-items: flex-start;
+
+      margin-bottom: 5px;
+    }
+
+    .occupation-area svg,
+    .location svg,
+    .bio svg {
+      margin-right: 10px;
+      color: $gray;
+    }
+
+    .occupation-area span,
+    .location span,
+    .bio span {
+      width: calc(100% - 15px);
+      font-size: 1.3rem;
+    }
+
+    .bio {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media (min-width: 700px) {
+  .basic-info {
+    flex-direction: row;
+    align-items: center;
+  }
+}

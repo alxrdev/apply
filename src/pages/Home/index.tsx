@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom'
 
 import { useAuth } from '../../services/auth'
 
-import SimpleHeader from '../../components/SimpleHeader'
+import Header from '../../components/Header'
 import SmallContainer from '../../components/SmallContainer'
 import InputGroup from '../../components/InputGroup'
 import Button from '../../components/Button'
@@ -36,7 +36,7 @@ const Home = () => {
 
   return (
     <div className='home'>
-      <SimpleHeader />
+      <Header />
 
       <SmallContainer>
         <h1 className='title'>Find the job of your dreans</h1>

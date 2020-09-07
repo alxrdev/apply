@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { FiLogOut, FiUser } from 'react-icons/fi'
 
 import { useAuth } from '../../services/auth'
@@ -11,6 +11,7 @@ import logoImage from '../../assets/img/logo.svg'
 
 const Header: React.FC = ({ children }) => {
   const { user, logOut } = useAuth()
+  const history = useHistory()
 
   return (
     <div className="header">
@@ -25,11 +26,11 @@ const Header: React.FC = ({ children }) => {
           { !user ? (
             <>
               <ul className="menu">
-                <li><Link to="./login">Apply for a job (Free!)</Link></li>
+                <li><Link to="/login">Apply for a job (Free!)</Link></li>
                 <li className="separator"></li>
-                <li><Link to="./signup">Register a job</Link></li>
+                <li><Link to="/signup">Register a job</Link></li>
               </ul>
-              <Link to="./login" className="login-button">Log In</Link>
+              <Link to="/login" className="login-button">Log In</Link>
             </>
           ) : (
             <div className="user">
@@ -43,7 +44,10 @@ const Header: React.FC = ({ children }) => {
                     {
                       value: 'profile',
                       text: 'Profile',
-                      icon: <FiUser size={15} />
+                      icon: <FiUser size={15} />,
+                      callback: (value: string) => {
+                        history.push('/profile')
+                      }
                     }
                   ]
                 },

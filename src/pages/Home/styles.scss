@@ -1,32 +1,40 @@
 @import '../../assets/scss/variables';
 
 .home {
-  .title {
-    text-align: center;
-  }
-  
-  form {
-    margin: 50px 0;
-  }
-  
-  .actions {
-    margin-top: 4rem;
-    text-align: center;
-  
-    .looking-for-a-job {
-      margin-bottom: 10px;
+  .small-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    min-height: 80vh;
+
+    .title {
+      text-align: center;
     }
     
-    .are-you-employeer,
-    .looking-for-a-job {
-      font-size: 1.8rem;
-      font-weight: 700;
+    form {
+      margin: 50px 0;
     }
     
-    .are-you-employeer a,
-    .looking-for-a-job a {
-      color: $primary-color;
-      text-decoration: none;
+    .actions {
+      margin-top: 4rem;
+      text-align: center;
+    
+      .looking-for-a-job {
+        margin-bottom: 10px;
+      }
+      
+      .are-you-employeer,
+      .looking-for-a-job {
+        font-size: 1.8rem;
+        font-weight: 700;
+      }
+      
+      .are-you-employeer a,
+      .looking-for-a-job a {
+        color: $primary-color;
+        text-decoration: none;
+      }
     }
   }
 }

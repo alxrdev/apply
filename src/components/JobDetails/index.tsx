@@ -31,7 +31,7 @@ const JobDetails = () => {
           </div>
           <div className="title-employeer">
             <h5>{ activeJob.title }</h5>
-            <span><Link to='/'>{ activeJob.user.name }</Link> <span>{ Intl.DateTimeFormat('pt-BR').format(new Date(activeJob.createdAt)) }</span></span>
+            <span><Link to={`/user/${activeJob.user.id}`}>{ activeJob.user.name }</Link> <span>{ Intl.DateTimeFormat('pt-BR').format(new Date(activeJob.createdAt)) }</span></span>
           </div>
         </div>
 
