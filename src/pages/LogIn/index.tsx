@@ -1,8 +1,9 @@
 import React, { FormEvent, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import * as Yup from 'yup'
 
 import { useAuth } from '../../services/auth'
+import useQuery from '../../hooks/useQuery'
 import { APIErrorResponse } from '../../types'
 import getValidationError from '../../utils/getValidationError'
 
@@ -21,6 +22,8 @@ interface ErrorMessage {
 
 const LogIn = () => {
   const { logIn } = useAuth()
+  const redirect = useQuery().get('redirect') ?? undefined
+  const history = useHistory()
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -57,6 +60,13 @@ const LogIn = () => {
 
     const result = await logIn(email, password)
 
+    // if user is success login and exists a redirect link,
+    // then redirect to this link
+    if (!result && redirect) {
+      console.log('redirecting to', redirect)
+      history.push(redirect)
+    }
+
     if (result && result.error_status_code !== 501) {
       const data: APIErrorResponse = result
       setErrorMessage({ ...errorMessage, global: data.error_message })
@@ -67,8 +77,6 @@ const LogIn = () => {
       alert('Sorry, we have an internal server error :(')
       return false
     }
-
-    // redirect user
   }
 
   const handleChange = (stateChange: CallableFunction) => {

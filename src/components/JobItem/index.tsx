@@ -1,8 +1,7 @@
-import React, { useState, useContext, useRef, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { FiBriefcase, FiDollarSign } from 'react-icons/fi'
+import React from 'react'
+import { Link, useHistory } from 'react-router-dom'
+import { MdPublic, MdQueryBuilder } from 'react-icons/md'
 
-import { ActiveJobContext } from '../JobsDriectory/ActiveJobProvider'
 import { Job } from '../../types'
 
 import './styles.scss'
@@ -12,58 +11,40 @@ interface Props {
 }
 
 const JobItem: React.FC<Props> = ({ job }) => {
-  const { setActiveJob } = useContext(ActiveJobContext)
-  const jobItemRef = useRef<HTMLDivElement>(null)
-  const [active, setActive] = useState(false)
-
-  useEffect(() => {
-    document.addEventListener('click', deactiveAllJobs, false)
-    return () => document.removeEventListener('click', deactiveAllJobs, false)
-  }, [active])
-
-  const toggleJob = () => {
-    setActiveJob((!active) ? job : null)
-    setActive(!active)
-  }
-
-  // deactive the job if the user click out
-  const deactiveAllJobs = (event: MouseEvent) => {
-    const elements = Array.prototype.map.call(jobItemRef.current?.children, (element) => element)
-
-    const isThis = elements.includes(event.target)
-
-    if (!isThis && active) {
-      setActive(false)
-    }
-  }
+  const history = useHistory()
 
   return (
     <div
-      className={`job-item ${active ? 'active' : ''}`}
-      onClick={toggleJob}
-      ref={jobItemRef}
+      className="job-item"
+      onClick={() => history.push(`/job/${job.id}`)}
     >
       <div className="avatar">
         <img src={ job.user.avatar } alt={job.title} />
       </div>
+
       <div className="job-content">
-        <div className="title-employeer">
-          <h5>{ job.title }</h5>
-          <span><Link to={`/user/${job.user.id}`}>{ job.user.name }</Link> <span>{ Intl.DateTimeFormat('pt-BR').format(new Date(job.createdAt)) }</span></span>
+        <div className="employeer-title">
+          <Link to={`/user/${job.user.id}`} className="employeer">{ job.user.name }</Link>
+
+          <h5 className="title">{ job.title }</h5>
         </div>
-        <div className="location">
-          <h5>{ job.address.city }, { job.address.state }</h5>
-          <span>
-            <FiBriefcase size={15} />
-            <span>{ job.jobType }</span>
-          </span>
-        </div>
-        <div className="salary">
-          <h5>{ Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(job.salary) }</h5>
-          <span>
-            <FiDollarSign size={15} />
-            <span>Per Month</span>
-          </span>
+
+        <div className="type-location-date">
+          <div>
+            <span className="type">{ job.jobType }</span>
+          </div>
+
+          <div className="location-date">
+            <div className="location">
+              <MdPublic size={18} />
+              <span>{ job.address.city }</span>
+            </div>
+
+            <div className="date">
+              <MdQueryBuilder size={18} />
+              <span>{ Intl.DateTimeFormat('pt-BR').format(new Date(job.createdAt)) }</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -6,6 +6,7 @@ import AuthRoute from './AuthRoute'
 
 import Home from '../pages/Home'
 import Jobs from '../pages/Jobs'
+import Job from '../pages/Job'
 import LogIn from '../pages/LogIn'
 import SignUp from '../pages/SignUp'
 import ForgotPassword from '../pages/ForgotPassword'
@@ -17,6 +18,7 @@ const Routes = () => (
     <Switch>
       <Route path='/' exact component={Home} />
       <Route path='/jobs' component={Jobs} />
+      <Route path='/job/:id' component={Job} />
 
       <AuthRoute path='/login' component={LogIn} />
       <AuthRoute path='/signup' component={SignUp} />

@@ -1,10 +1,8 @@
 import React from 'react'
 
 import { Job, CollectionResponse } from '../../types'
-import { ActiveJobProvider } from './ActiveJobProvider'
 
-import JobsList from '../JobsList'
-import JobDetails from '../JobDetails'
+import JobItem from '../JobItem'
 
 import './styles.scss'
 
@@ -14,15 +12,14 @@ interface Props {
 
 const JobsDirectory: React.FC<Props> = ({ jobsResponse }) => {
   return (
-    <ActiveJobProvider>
-      <div className="jobs-directory">
-        <div className="all-jobs">
-          <p className='total-jobs'>Total jobs found: {jobsResponse.totalItems}</p>
-          <JobsList jobs={jobsResponse.data} />
-        </div>
-        <JobDetails />
+    <div className="jobs-directory">
+      <div className="all-jobs">
+        <p className='total-jobs'>Total jobs found: {jobsResponse.totalItems}</p>
+        { jobsResponse.data.map(job => (
+          <JobItem key={job.id} job={job} />
+        )) }
       </div>
-    </ActiveJobProvider>
+    </div>
   )
 }
 

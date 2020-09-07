@@ -1,0 +1,236 @@
+@import '../../assets/scss/variables';
+
+.job {
+  padding-bottom: 50px;
+
+  .actions {
+    margin-top: 20px;
+
+    .back-button {
+      display: flex;
+      align-items: center;
+  
+      background: transparent;
+      color: $primary-color;
+  
+      border: none;
+      outline: none;
+  
+      cursor: pointer;
+      
+      svg {
+        margin-right: 10px;
+        transform: rotate(180deg)
+      }
+    }
+
+    .apply {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      
+      display: block;
+
+      width: 100%;
+
+      margin-bottom: 10px;
+
+      p {
+        display: none;
+      }
+    }
+  }
+
+  .job-details {
+    width: 100%;
+    max-width: 700px;
+
+    margin-top: 30px;
+
+    .job-header {
+      h1 {
+        font-size: 3rem;
+        font-weight: 700;
+      }
+      
+      .type {
+        display: inline-block;
+  
+        padding: .5rem .9rem;
+        margin-top: 5px;
+  
+        color: $primary-color;
+  
+        font-size: 1.5rem;
+        font-weight: 700;
+  
+        border: 1px solid $primary-color;
+        border-radius: .6rem;;
+      }
+
+      .date {
+        display: flex;
+        align-items: center;
+
+        margin-top: 10px;
+
+        color: $gray;
+
+        span {
+          margin-left: 5px;
+  
+          font-size: 1.5rem;
+        }
+      }
+    }
+
+    .employeer-header {
+      display: flex;
+      align-items: center;
+
+      margin-top: 50px;
+
+      .avatar {
+        width: 100%;
+        max-width: 70px;
+    
+        margin-right: 10px;
+    
+        img {
+          width: 100%;
+    
+          border: 1px solid $gray;
+          border-radius: 1.1rem;
+        }
+      }
+
+      .name-location {
+        h5 {
+          color: $text-color;
+  
+          font-size: 2rem;
+          font-weight: 700;
+          text-decoration: none;
+        }
+
+        .location {
+          display: flex;
+    
+          margin-top: 5px;
+    
+          color: $gray;
+
+          span {
+            margin-left: 5px;  
+            font-size: 1.3rem;
+          }
+        }
+      }
+    }
+
+    .description {
+      margin-top: 50px;
+
+      p {
+        margin-bottom: 30px;
+      }
+    }
+
+    .infos {
+      display: flex;
+      flex-direction: column;
+
+      padding-top: 20px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+
+      border-top: 1px solid $gray-light;
+
+      .info-location,
+      .info-salary,
+      .info-type {
+        flex: 1;
+
+        margin-bottom: 10px;
+
+        text-align: left;
+
+        h5 {
+          font-size: 1.6rem;
+          margin-bottom: 10px;
+        }
+
+        .content {
+          display: flex;
+          align-items: flex-start;
+
+          color: $gray;
+
+          svg {
+            display: inline-block;
+            width: 35px!important;
+            color: $primary-color;
+          }
+
+          span {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 500px) {
+  .job {
+    .container {
+      .infos {
+        flex-direction: row;
+        justify-items: left;
+      }
+    }
+  }
+}
+
+@media (min-width: 800px) {
+  .job {
+    padding-bottom: 0;
+
+    .container {
+      display: flex;
+
+      .actions {
+        width: 350px;
+
+        margin-top: 0px;
+        margin-right: 50px;
+
+        .apply {
+          position: inherit;
+
+          display: block;
+
+          padding-top: 10px;
+          margin-top: 10px;
+
+          border-top: 1px solid $gray-light;
+
+          p {
+            display: block;
+
+            margin: 15px 0px 20px 0;
+
+            color: $gray;
+
+            font-size: 1.3rem;
+          }
+        }
+      }
+
+      .job-details {
+        margin-top: 0px;
+      }
+    }
+  }
+}

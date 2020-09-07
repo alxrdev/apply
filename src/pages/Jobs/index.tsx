@@ -7,6 +7,7 @@ import { CollectionResponse, Job } from '../../types'
 
 import Header from '../../components/Header'
 import Container from '../../components/Container'
+import SmallContainer from '../../components/SmallContainer'
 import InputGroup from '../../components/InputGroup'
 import Button from '../../components/Button'
 import Dropdown from '../../components/Dropdown'
@@ -55,7 +56,7 @@ const Jobs = () => {
   return (
     <div className="jobs">
       <Header>
-        <Container>
+        <SmallContainer>
           <div className="search-jobs">
             <form onSubmit={handleForm}>
               <InputGroup
@@ -133,12 +134,12 @@ const Jobs = () => {
               />
             </div>
           </div>
-        </Container>
+        </SmallContainer>
       </Header>
 
-      <Container>
+      <SmallContainer>
         { jobsResponse && (<JobsDirectory jobsResponse={jobsResponse} />) }
-      </Container>
+      </SmallContainer>
     </div>
   )
 }
