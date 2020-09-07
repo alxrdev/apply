@@ -59,7 +59,7 @@ export const AuthProvider: React.FC = ({ children }) => {
   }
 
   const logOut = (): void => {
-    removeCookies('@Apply:user')
+    removeCookies('@Apply:user', { path: '/' })
     setUser(null)
   }
 
