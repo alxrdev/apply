@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
-import { MdTrendingFlat, MdQueryBuilder, MdPublic, MdAttachMoney, MdWork } from 'react-icons/md'
+import { MdQueryBuilder, MdPublic, MdAttachMoney, MdWork } from 'react-icons/md'
 
 import { useAuth } from '../../services/auth'
 import { Job as JobEntity } from '../../types'
@@ -9,6 +9,7 @@ import api from '../../services/api'
 import Header from '../../components/Header'
 import Container from '../../components/Container'
 import Button from '../../components/Button'
+import BackButton from '../../components/BackButton'
 
 import './styles.scss'
 
@@ -33,13 +34,8 @@ const Job: React.FC = () => {
 
       <Container>
         <div className="actions">
-          <button
-            className="back-button"
-            onClick={() => history.goBack()}
-          >
-            <MdTrendingFlat size={30} />
-            <span>Back to search</span>
-          </button>
+          <BackButton />
+
           { user
             ? (
               <div className="apply">

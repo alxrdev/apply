@@ -6,24 +6,6 @@
   .actions {
     margin-top: 20px;
 
-    .back-button {
-      display: flex;
-      align-items: center;
-  
-      background: transparent;
-      color: $primary-color;
-  
-      border: none;
-      outline: none;
-  
-      cursor: pointer;
-      
-      svg {
-        margin-right: 10px;
-        transform: rotate(180deg)
-      }
-    }
-
     .apply {
       position: fixed;
       bottom: 0;
