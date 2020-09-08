@@ -34,7 +34,7 @@ const Job: React.FC = () => {
 
       <Container>
         <div className="actions">
-          <BackButton />
+          <BackButton text='Back to search' />
 
           { user
             ? (

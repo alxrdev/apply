@@ -6,7 +6,6 @@ import api from '../../services/api'
 import { CollectionResponse, Job } from '../../types'
 
 import Header from '../../components/Header'
-import Container from '../../components/Container'
 import SmallContainer from '../../components/SmallContainer'
 import InputGroup from '../../components/InputGroup'
 import Button from '../../components/Button'

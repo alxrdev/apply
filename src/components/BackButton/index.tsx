@@ -4,7 +4,7 @@ import { MdTrendingFlat } from 'react-icons/md'
 
 import './styles.scss'
 
-const BackButton: React.FC = () => {
+const BackButton: React.FC<{ text: string }> = ({ text }) => {
   const history = useHistory()
 
   return (
@@ -13,7 +13,7 @@ const BackButton: React.FC = () => {
       onClick={() => history.goBack()}
     >
       <MdTrendingFlat size={30} />
-      <span>Back to search</span>
+      <span>{ text }</span>
     </button>
   )
 }

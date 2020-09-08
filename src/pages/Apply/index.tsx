@@ -1,25 +1,28 @@
 import React, { useEffect, useState, FormEvent } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
+import swal from 'sweetalert'
 
-import { Job } from '../../types'
+import { Job, APIErrorResponse } from '../../types'
 import api from '../../services/api'
 
 import Header from '../../components/Header'
-import SmallContainer from '../../components/SmallContainer'
+import Container from '../../components/Container'
 import FileGroup from '../../components/FileGroup/Index'
+import Button from '../../components/Button'
+import BackButton from '../../components/BackButton'
 
 import './styles.scss'
-import Button from '../../components/Button'
 
 const Apply: React.FC = () => {
   const { id } = useParams()
   const [job, setJob] = useState<Job>()
-  const [resume, setResumse] = useState<File>()
   const history = useHistory()
+
+  const [resume, setResumse] = useState<File>()
+  const [error, setError] = useState('')
 
   useEffect(() => {
     if (id) {
-      console.log('searching..')
       api.get(`/jobs/${id}`)
         .then(response => {
           const data = response.data.data as Job
@@ -32,7 +35,49 @@ const Apply: React.FC = () => {
   function handleForm (event: FormEvent) {
     event.preventDefault()
 
-    console.log(resume)
+    setError('')
+
+    if (!resume) {
+      setError('The resume file is required.')
+      return false
+    }
+
+    const data = new FormData()
+    data.append('resume', resume)
+
+    api.post(
+      `/jobs/${job!.id}/apply`, data,
+      { headers: { 'Content-Type': 'multipart/form-data' } })
+      .then(res => {
+        swal({
+          title: 'Your Application has been sucessfully submitted.',
+          text: 'Your application will be sent to the following company.',
+          icon: 'success',
+          className: 'apply-modal'
+        })
+          .then(_ => {
+            history.push('/')
+          })
+      })
+      .catch(error => {
+        const data = error.response.data as APIErrorResponse
+        if (data.error_status_code === 400) {
+          swal({
+            title: 'Ops!',
+            text: (data.error_details) ? data.error_details[0].constraints : data.error_message,
+            icon: 'error',
+            className: 'apply-modal'
+          })
+          setError((data.error_details) ? data.error_details[0].constraints : data.error_message)
+        } else {
+          swal({
+            title: 'Ops!',
+            text: 'We have a internal server error.',
+            icon: 'error',
+            className: 'apply-modal'
+          })
+        }
+      })
   }
 
   return (
@@ -40,8 +85,12 @@ const Apply: React.FC = () => {
       <Header />
 
       <div className="apply">
-        { job && (
-          <SmallContainer>
+        <Container>
+          <div className="actions">
+            <BackButton text='Back to job' />
+          </div>
+
+          { job && (
             <div className="apply-content">
               <div className="job-info">
                 <div className="employeer-avatar">
@@ -61,7 +110,7 @@ const Apply: React.FC = () => {
                     id='resume'
                     label='Choose a resume'
                     onChange={setResumse}
-                    required={true}
+                    error={error}
                   />
 
                   <div className="button-section">
@@ -70,8 +119,8 @@ const Apply: React.FC = () => {
                 </form>
               </div>
             </div>
-          </SmallContainer>
-        ) }
+          ) }
+        </Container>
       </div>
     </div>
   )
