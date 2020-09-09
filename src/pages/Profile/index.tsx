@@ -6,6 +6,7 @@ import Container from '../../components/Container'
 import BackButton from '../../components/BackButton'
 import BasicInfo from '../../components/BasicInfo'
 import JobsApplied from '../../components/JobsApplied'
+import EmployeerJobs from '../../components/EmployeerJobs'
 
 import './styles.scss'
 
@@ -28,7 +29,7 @@ const Profile: React.FC = () => {
             {
               user.role === 'user'
                 ? (<JobsApplied id={user.id} />)
-                : (<div>employeer</div>)
+                : (<EmployeerJobs id={user.id} />)
             }
           </div>
         </Container>

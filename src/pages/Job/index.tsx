@@ -10,6 +10,7 @@ import Header from '../../components/Header'
 import Container from '../../components/Container'
 import Button from '../../components/Button'
 import BackButton from '../../components/BackButton'
+import UsersApplied from '../../components/UsersApplied'
 
 import './styles.scss'
 
@@ -57,65 +58,71 @@ const Job: React.FC = () => {
 
         { job
           ? (
-            <div className="job-details">
-              <div className="job-header">
-                <h1>{ job.title }</h1>
+            <div>
+              <div className="job-details">
+                <div className="job-header">
+                  <h1>{ job.title }</h1>
 
-                <span className="type">{ job.jobType }</span>
+                  <span className="type">{ job.jobType }</span>
 
-                <div className="date">
-                  <MdQueryBuilder size={18} />
-                  <span>{ Intl.DateTimeFormat('pt-BR').format(new Date(job.createdAt)) }</span>
-                </div>
-              </div>
-
-              <div className="employeer-header">
-                <div className="avatar">
-                  <img src={job.user.avatar} alt={job.user.name}/>
+                  <div className="date">
+                    <MdQueryBuilder size={18} />
+                    <span>{ Intl.DateTimeFormat('pt-BR').format(new Date(job.createdAt)) }</span>
+                  </div>
                 </div>
 
-                <div className="name-location">
-                  <h5>{ job.user.name }</h5>
+                <div className="employeer-header">
+                  <div className="avatar">
+                    <img src={job.user.avatar} alt={job.user.name}/>
+                  </div>
 
-                  <div className="location">
-                    <MdPublic size={18} />
-                    <span>{ job.address.city }</span>
+                  <div className="name-location">
+                    <h5>{ job.user.name }</h5>
+
+                    <div className="location">
+                      <MdPublic size={18} />
+                      <span>{ job.address.city }</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="description">
+                  { job.description } <br/>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil suscipit quibusdam iste ex.</p>
+                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem officia et aut architecto sequi placeat eveniet necessitatibus quasi praesentium totam fugiat, consequuntur officiis rem voluptate minima voluptatum ex eos, id expedita. Eos ex neque eum labore mollitia, cupiditate nulla officiis, iusto ea corrupti dolorum, temporibus maxime deleniti nisi expedita deserunt.</p>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, provident.</p>
+                </div>
+
+                <div className="infos">
+                  <div className="info-location">
+                    <h5>Location</h5>
+                    <div className="content">
+                      <MdPublic size={20} />
+                      <span>{ job.address.city }, { job.address.state }</span>
+                    </div>
+                  </div>
+
+                  <div className="info-salary">
+                    <h5>Salary</h5>
+                    <div className="content">
+                      <MdAttachMoney size={20} />
+                      <span>{ Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(job.salary) } / Month</span>
+                    </div>
+                  </div>
+
+                  <div className="info-type">
+                    <h5>Job Type</h5>
+                    <div className="content">
+                      <MdWork size={20} />
+                      <span>{ job.jobType }</span>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <div className="description">
-                { job.description } <br/>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil suscipit quibusdam iste ex.</p>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem officia et aut architecto sequi placeat eveniet necessitatibus quasi praesentium totam fugiat, consequuntur officiis rem voluptate minima voluptatum ex eos, id expedita. Eos ex neque eum labore mollitia, cupiditate nulla officiis, iusto ea corrupti dolorum, temporibus maxime deleniti nisi expedita deserunt.</p>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, provident.</p>
-              </div>
-
-              <div className="infos">
-                <div className="info-location">
-                  <h5>Location</h5>
-                  <div className="content">
-                    <MdPublic size={20} />
-                    <span>{ job.address.city }, { job.address.state }</span>
-                  </div>
-                </div>
-
-                <div className="info-salary">
-                  <h5>Salary</h5>
-                  <div className="content">
-                    <MdAttachMoney size={20} />
-                    <span>{ Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(job.salary) } / Month</span>
-                  </div>
-                </div>
-
-                <div className="info-type">
-                  <h5>Job Type</h5>
-                  <div className="content">
-                    <MdWork size={20} />
-                    <span>{ job.jobType }</span>
-                  </div>
-                </div>
-              </div>
+              { job.user.id === user!.id && (
+                <UsersApplied id={job.id} />
+              ) }
             </div>
           )
           : (<h1>404</h1>)

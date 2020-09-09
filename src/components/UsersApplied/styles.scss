@@ -1,0 +1,12 @@
+@import '../../assets/scss/variables';
+
+.users-applied {
+  padding-top: 30px;
+  margin-top: 30px;
+
+  border-top: 1px solid $gray-light;
+
+  h2 {
+    text-align: center;
+  }
+}
