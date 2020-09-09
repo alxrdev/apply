@@ -1,0 +1,46 @@
+@import '../../assets/scss/variables';
+
+.update-avatar {
+  .avatar {
+    position: relative;
+
+    width: 100%;
+    max-width: 150px;
+
+    margin: 0 auto;
+    margin-bottom: 30px;
+
+    img {
+      width: 100%;
+
+      border: 1px solid $gray;
+      border-radius: 1.1rem;
+    }
+
+    .change {
+      position: absolute;
+      top: 0;
+      right: -3px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 30px;
+      height: 30px;
+
+      background: #fff;
+      color: $gray;
+
+      border: 1px solid $gray;
+      border-radius: 50%;
+
+      cursor: pointer;
+      transition: all ease .3s;
+
+      &:hover {
+        filter: brightness(0.95);
+      }
+    }
+  }
+}

@@ -2,25 +2,32 @@
 
 .basic-info {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-start;
 
+  margin-bottom: 30px;
+
   .avatar {
+    position: relative;
+
     width: 100%;
-    max-width: 100px;
+    max-width: 50px;
 
     img {
       width: 100%;
 
       border: 1px solid $gray;
-      border-radius: 30px;
+      border-radius: 1.1rem;
     }
   }
   
   .infos {
+    position: relative;
+
     max-width: 700px;
     
     padding: 1rem;
+    padding-top: 0;
 
     list-style: none;
 
@@ -58,11 +65,24 @@
       margin-bottom: 0;
     }
   }
+
+  .edit-button {
+    position: absolute;
+    top: 0;
+    right: 3px;
+
+    padding: 1px;
+
+    color: $primary-color;
+
+    cursor: pointer;
+  }
 }
 
 @media (min-width: 700px) {
   .basic-info {
-    flex-direction: row;
-    align-items: center;
+    .avatar {
+      max-width: 100px;
+    }
   }
 }

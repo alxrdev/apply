@@ -36,5 +36,11 @@ export interface APIErrorResponse {
   error_status_code: number
   message: string
   success: boolean
-  error_details?: any
+  error_details?: Array<APIValidationError>
+}
+
+export interface APIValidationError {
+  propertie: string
+  value: string
+  constraints: string
 }

@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { useAuth } from '../../services/auth'
-
-import { User } from '../../types'
-import api from '../../services/api'
 
 import Header from '../../components/Header'
 import Container from '../../components/Container'
+import BackButton from '../../components/BackButton'
 import BasicInfo from '../../components/BasicInfo'
 import JobsApplied from '../../components/JobsApplied'
 
@@ -13,39 +11,27 @@ import './styles.scss'
 
 const Profile: React.FC = () => {
   const { user } = useAuth()
-  const [currentUser, setCurrentUser] = useState<User>()
-
-  useEffect(() => {
-    if (user) {
-      api.get(`/users/${user.id}`)
-        .then(result => {
-          const data = result.data.data as User
-          setCurrentUser(data)
-        })
-        .catch(error => { console.log(error) })
-    }
-  }, [user])
 
   return (
     <div className="user-profile">
-      { currentUser && (
-        <>
-          <Header>
-            <Container>
-              <BasicInfo user={currentUser} />
-            </Container>
-          </Header>
+      <Header />
+
+      { user && (
+        <Container>
+          <div className="actions">
+            <BackButton text='Back' />
+          </div>
 
           <div className="user-profile-content">
-            <Container>
-              {
-                currentUser.role === 'user'
-                  ? (<JobsApplied user={currentUser} />)
-                  : (<div>employeer</div>)
-              }
-            </Container>
+            <BasicInfo id={user.id} />
+
+            {
+              user.role === 'user'
+                ? (<JobsApplied id={user.id} />)
+                : (<div>employeer</div>)
+            }
           </div>
-        </>
+        </Container>
       ) }
     </div>
   )

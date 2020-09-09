@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import { User, CollectionResponse, Job } from '../../types'
+import { CollectionResponse, Job } from '../../types'
 import api from '../../services/api'
 
 import JobItem from '../JobItem'
@@ -8,20 +8,20 @@ import JobItem from '../JobItem'
 import './styles.scss'
 
 interface Props {
-  user: User
+  id: string
 }
 
-const JobsApplied: React.FC<Props> = ({ user }) => {
+const JobsApplied: React.FC<Props> = ({ id }) => {
   const [jobsResponse, setJobsResponse] = useState<Array<Job>>([])
 
   useEffect(() => {
-    api.get(`/users/${user.id}/jobs/applied`)
+    api.get(`/users/${id}/jobs/applied`)
       .then(result => {
         const data = result.data as CollectionResponse<Job>
         setJobsResponse(data.data)
       })
       .catch(_ => {})
-  }, [user])
+  }, [id])
 
   return (
     <div className="jobs-applied">

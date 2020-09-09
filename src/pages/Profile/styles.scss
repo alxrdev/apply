@@ -1,19 +1,19 @@
 @import '../../assets/scss/variables';
 
 .user-profile {
-  .jobs-applied {
-    h2 {
-      margin-bottom: 30px;
-      text-align: center;
-    }
+  .actions {
+    margin-bottom: 10px;
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 727px) {
   .user-profile {
-    .jobs-applied {
-      h2 {
-        text-align: left;
+    .container {
+      display: flex;
+    
+      .actions {
+        width: 100%;
+        max-width: 250px;
       }
     }
   }

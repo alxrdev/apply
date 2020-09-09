@@ -12,6 +12,7 @@ import SignUp from '../pages/SignUp'
 import ForgotPassword from '../pages/ForgotPassword'
 import Apply from '../pages/Apply'
 import Profile from '../pages/Profile'
+import EditProfile from '../pages/EditProfile'
 
 const Routes = () => (
   <BrowserRouter>
@@ -25,7 +26,9 @@ const Routes = () => (
       <AuthRoute path='/forgot-password' component={ForgotPassword} />
 
       <ProtectedRoute path='/apply/:id' component={Apply} />
-      <ProtectedRoute path='/profile' component={Profile} />
+      <ProtectedRoute path='/profile' exact component={Profile} />
+      <Route path='/profile/edit' component={EditProfile} />
+      {/* <ProtectedRoute path='/profile/edit' component={EditProfile} /> */}
     </Switch>
   </BrowserRouter>
 )
