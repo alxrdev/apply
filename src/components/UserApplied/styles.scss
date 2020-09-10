@@ -1,0 +1,108 @@
+@import '../../assets/scss/variables';
+
+.user-applied {
+  width: 100%;
+  max-width: 700px;
+
+  padding: 1.1rem;
+  margin-bottom: 20px;
+
+  background: #fff;
+
+  border: 1px solid $gray-light;
+  border-radius: 1.1rem;
+
+  box-shadow: 2px 2px 5px hsla(0, 0%, 80%, 0.1);
+
+  .main {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+
+    .avatar {
+      width: 100%;
+      max-width: 50px;
+
+      img {
+        width: 100%;
+
+        border: 1px solid $gray;
+        border-radius: 1.1rem;
+      }
+    }
+    
+    .infos {
+      position: relative;
+
+      max-width: 700px;
+      
+      padding: 1rem;
+      padding-top: 0;
+
+      list-style: none;
+
+      .name {
+        h1 {
+          font-size: 1.8rem;
+          margin-bottom: 10px;
+        }
+      }
+
+      .occupation-area,
+      .location,
+      .bio {
+        display: flex;
+        align-items: flex-start;
+
+        margin-bottom: 5px;
+      }
+
+      .occupation-area svg,
+      .location svg,
+      .bio svg {
+        margin-right: 10px;
+        color: $gray;
+      }
+
+      .occupation-area span,
+      .location span,
+      .bio span {
+        width: calc(100% - 15px);
+        font-size: 1.3rem;
+      }
+
+      .bio {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .resume {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+
+    padding: .5rem;
+
+    color: $gray;
+
+    font-weight: 700;
+    font-size: 1.3rem;
+    text-decoration: none;
+
+    border-radius: 1.1rem;
+
+    svg {
+      color: $primary-color;
+    }
+
+    span {
+      margin-left: 10px;
+    }
+
+    &:hover {
+      background-color: $gray-light;
+    }
+  }
+}
