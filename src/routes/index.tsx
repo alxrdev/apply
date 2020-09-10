@@ -29,10 +29,11 @@ const Routes = () => (
 
       <ProtectedRoute path='/apply/:id' component={Apply} />
       <ProtectedRoute path='/profile' exact component={Profile} />
-      <ProtectedRoute path='/profile/edit' component={EditProfile} />
+      <Route path='/profile/edit' component={EditProfile} />
+      {/* <ProtectedRoute path='/profile/edit' component={EditProfile} /> */}
 
       <ProtectedRoute path='/new-job' component={AddJob} />
-      <Route path='/edit-job/:id' component={EditJob} />
+      <ProtectedRoute path='/edit-job/:id' component={EditJob} />
     </Switch>
   </BrowserRouter>
 )
