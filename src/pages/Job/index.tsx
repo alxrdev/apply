@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import { MdQueryBuilder, MdPublic, MdAttachMoney, MdWork } from 'react-icons/md'
+import parser from 'html-react-parser'
 
 import { useAuth } from '../../services/auth'
 import { Job as JobEntity } from '../../types'
@@ -87,10 +88,7 @@ const Job: React.FC = () => {
                 </div>
 
                 <div className="description">
-                  { job.description } <br/>
-                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil suscipit quibusdam iste ex.</p>
-                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem officia et aut architecto sequi placeat eveniet necessitatibus quasi praesentium totam fugiat, consequuntur officiis rem voluptate minima voluptatum ex eos, id expedita. Eos ex neque eum labore mollitia, cupiditate nulla officiis, iusto ea corrupti dolorum, temporibus maxime deleniti nisi expedita deserunt.</p>
-                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, provident.</p>
+                  { parser(job.description) }
                 </div>
 
                 <div className="infos">
