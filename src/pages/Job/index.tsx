@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
-import { MdQueryBuilder, MdPublic, MdAttachMoney, MdWork } from 'react-icons/md'
+import { MdQueryBuilder, MdPublic, MdAttachMoney, MdWork, MdEdit } from 'react-icons/md'
 import parser from 'html-react-parser'
 
 import { useAuth } from '../../services/auth'
@@ -62,6 +62,15 @@ const Job: React.FC = () => {
             <div>
               <div className="job-details">
                 <div className="job-header">
+                  { user?.id === job.user.id && (
+                    <span
+                      className='edit-button'
+                      onClick={() => history.push(`/edit-job/${job.id}`)}
+                    >
+                      <MdEdit size={15} />
+                    </span>
+                  ) }
+
                   <h1>{ job.title }</h1>
 
                   <span className="type">{ job.jobType }</span>
