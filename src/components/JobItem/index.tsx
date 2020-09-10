@@ -37,7 +37,7 @@ const JobItem: React.FC<Props> = ({ job }) => {
           <div className="location-date">
             <div className="location">
               <MdPublic size={18} />
-              <span>{ job.address.city }</span>
+              <span>{ job.address.city }, { job.address.state }</span>
             </div>
 
             <div className="date">

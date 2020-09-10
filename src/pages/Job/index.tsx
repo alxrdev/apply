@@ -91,7 +91,7 @@ const Job: React.FC = () => {
 
                     <div className="location">
                       <MdPublic size={18} />
-                      <span>{ job.address.city }</span>
+                      <span>{ job.address.city }, { job.address.state }</span>
                     </div>
                   </div>
                 </div>
