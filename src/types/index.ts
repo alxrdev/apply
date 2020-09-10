@@ -40,7 +40,7 @@ export interface APIErrorResponse {
 }
 
 export interface APIValidationError {
-  propertie: string
+  property: string
   value: string
   constraints: string
 }

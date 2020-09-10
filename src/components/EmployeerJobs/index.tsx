@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
 import { Job, CollectionResponse } from '../../types'
 import api from '../../services/api'
 
+import Button from '../Button'
 import JobItem from '../JobItem'
 
 import './styles.scss'
-import Button from '../Button'
 
 interface Props {
   id: string
@@ -14,6 +15,7 @@ interface Props {
 
 const EmployeerJobs: React.FC<Props> = ({ id }) => {
   const [jobsResponse, setJobsResponse] = useState<Array<Job>>([])
+  const history = useHistory()
 
   useEffect(() => {
     api.get(`/users/${id}/jobs`)
@@ -28,7 +30,7 @@ const EmployeerJobs: React.FC<Props> = ({ id }) => {
     <div className="employeer-jobs">
       <div className="top">
         <h1>My jobs</h1>
-        <Button type='primary' content='Add new' />
+        <Button type='primary' content='Add new' onClick={() => history.push('/new-job')} />
       </div>
 
       <div className="jobs">

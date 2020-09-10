@@ -13,6 +13,7 @@ import ForgotPassword from '../pages/ForgotPassword'
 import Apply from '../pages/Apply'
 import Profile from '../pages/Profile'
 import EditProfile from '../pages/EditProfile'
+import AddJob from '../pages/AddJob'
 
 const Routes = () => (
   <BrowserRouter>
@@ -27,8 +28,9 @@ const Routes = () => (
 
       <ProtectedRoute path='/apply/:id' component={Apply} />
       <ProtectedRoute path='/profile' exact component={Profile} />
-      <Route path='/profile/edit' component={EditProfile} />
-      {/* <ProtectedRoute path='/profile/edit' component={EditProfile} /> */}
+      <ProtectedRoute path='/profile/edit' component={EditProfile} />
+
+      <ProtectedRoute path='/new-job' component={AddJob} />
     </Switch>
   </BrowserRouter>
 )

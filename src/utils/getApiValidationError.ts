@@ -9,7 +9,7 @@ const getApiValidationError = (response: APIErrorResponse): Error => {
 
   if (response.error_details) {
     response.error_details.forEach((error: APIValidationError) => {
-      errors[error.propertie] = error.constraints
+      errors[error.property] = error.constraints
     })
   }
 
