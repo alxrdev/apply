@@ -14,6 +14,7 @@ import Apply from '../pages/Apply'
 import Profile from '../pages/Profile'
 import EditProfile from '../pages/EditProfile'
 import AddJob from '../pages/AddJob'
+import EditJob from '../pages/EditJob'
 
 const Routes = () => (
   <BrowserRouter>
@@ -31,6 +32,7 @@ const Routes = () => (
       <ProtectedRoute path='/profile/edit' component={EditProfile} />
 
       <ProtectedRoute path='/new-job' component={AddJob} />
+      <Route path='/edit-job/:id' component={EditJob} />
     </Switch>
   </BrowserRouter>
 )
