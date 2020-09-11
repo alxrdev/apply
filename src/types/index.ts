@@ -1,17 +1,20 @@
 export interface User {
-  id: string,
+  id: string
   name: string,
-  role: string,
-  avatar: string,
-  createdAt: Date,
+  role: string
+  avatar: string
+  headline: string
+  address: string
+  bio: string
+  createdAt: Date
 }
 
 export interface CollectionResponse<T> {
-  success: boolean,
-  message: string,
-  totalItems: number,
-  previousPage: string,
-  nextPage: string,
+  success: boolean
+  message: string
+  totalItems: number
+  previousPage: string
+  nextPage: string
   data: Array<Job>
 }
 

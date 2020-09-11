@@ -51,15 +51,15 @@ const BasicInfo: React.FC<Props> = ({ id }) => {
             </li>
             <li className="occupation-area">
               <MdWork size={15} />
-              <span>UX Designer</span>
+              <span>{ user.headline }</span>
             </li>
             <li className="location">
               <MdPublic size={15} />
-              <span>São Mateus, ES</span>
+              <span>{ user.address }</span>
             </li>
             <li className="bio">
               <FaQuoteLeft size={15} />
-              <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, tempora.</span>
+              <span>{ user.bio }</span>
             </li>
           </ul>
         </div>

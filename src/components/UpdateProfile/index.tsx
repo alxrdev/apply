@@ -35,11 +35,11 @@ const UpdateProfile: React.FC = () => {
         .then(result => {
           const data = result.data.data as User
           setName(data.name)
-          // setHeadline(data.headline)
-          // setAddress(data.address)
-          // setBio(data.bio)
+          setHeadline(data.headline)
+          setAddress(data.address)
+          setBio(data.bio)
         })
-        .catch(_ => console.log('error update profile load'))
+        .catch(_ => console.log('error on load user'))
     }
   }, [user])
 
@@ -48,9 +48,9 @@ const UpdateProfile: React.FC = () => {
       // schema to validate the user input
       const schema = Yup.object().shape({
         name: Yup.string().required('The name is required'),
-        headline: Yup.string(),
-        address: Yup.string(),
-        bio: Yup.string()
+        headline: Yup.string().max(30),
+        address: Yup.string().max(30),
+        bio: Yup.string().max(80)
       })
 
       // validate the user input
@@ -132,6 +132,7 @@ const UpdateProfile: React.FC = () => {
         onChange={handleChange(setHeadline)}
         required
         error={errors.headline}
+        placeholder='Full Stack Developer'
       />
 
       <InputGroup
@@ -140,7 +141,8 @@ const UpdateProfile: React.FC = () => {
         value={address}
         onChange={handleChange(setAddress)}
         required
-        error=''
+        error={errors.address}
+        placeholder='Vitória, ES'
       />
 
       <InputGroup
@@ -150,6 +152,7 @@ const UpdateProfile: React.FC = () => {
         onChange={handleChange(setBio)}
         required
         error={errors.bio}
+        placeholder='I am Full Stack Developer...'
       />
 
       <Button type='primary' content='Update Profile' />

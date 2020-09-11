@@ -5,6 +5,8 @@
   flex-direction: row;
   align-items: flex-start;
 
+  width: 100%;
+
   margin-bottom: 30px;
 
   .avatar {
@@ -24,6 +26,7 @@
   .infos {
     position: relative;
 
+    width: 100%;
     max-width: 700px;
     
     padding: 1rem;
