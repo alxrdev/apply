@@ -25,7 +25,7 @@ const JobsApplied: React.FC<Props> = ({ id }) => {
 
   return (
     <div className="jobs-applied">
-      <h1>Jobs that I&apos;m applied</h1>
+      <h1>Jobs I applied for</h1>
 
       <div className="jobs">
         { jobsResponse.map(job => (
