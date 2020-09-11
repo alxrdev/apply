@@ -115,7 +115,7 @@ const EditJob: React.FC = () => {
     api.put(`/jobs/${id}`, { title, description, city, state, jobType, salary: Number(salary) })
       .then(async (result) => {
         swal({
-          text: 'Job has been sucessfully updated.',
+          text: 'Job has been successfully updated.',
           icon: 'success',
           className: 'job-updated-modal'
         })

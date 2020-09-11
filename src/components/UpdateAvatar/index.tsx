@@ -130,7 +130,7 @@ const UpdateAvatar: React.FC = () => {
               />
               <Button
                 type='primary'
-                content='Update avata'
+                content='Update avatar'
                 onClick={onUpdateAvatarClick}
               />
             </div>

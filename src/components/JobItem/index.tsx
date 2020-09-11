@@ -23,8 +23,8 @@ const JobItem: React.FC<Props> = ({ job }) => {
       </div>
 
       <div className="job-content">
-        <div className="employeer-title">
-          <Link to={`/user/${job.user.id}`} className="employeer">{ job.user.name }</Link>
+        <div className="employer-title">
+          <Link to={`/user/${job.user.id}`} className="employer">{ job.user.name }</Link>
 
           <h5 className="title">{ job.title }</h5>
         </div>

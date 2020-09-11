@@ -10,7 +10,7 @@ import SmallContainer from '../../components/SmallContainer'
 import InputGroup from '../../components/InputGroup'
 import Button from '../../components/Button'
 import Dropdown from '../../components/Dropdown'
-import JobsDirectory from '../../components/JobsDriectory'
+import JobsDirectory from '../../components/JobsDirectory'
 
 import './styles.scss'
 
@@ -28,10 +28,10 @@ const Jobs = () => {
   const history = useHistory()
 
   useEffect(() => {
-    searhJobs()
+    searchJobs()
   }, [sortBy, sortOrder, jobType])
 
-  function searhJobs () {
+  function searchJobs () {
     history.push(`/jobs?what=${what}&where=${where}&sortBy=${sortBy}&sortOrder=${sortOrder}&jobType=${jobType}`)
     api.get(`/jobs?what=${what}&where=${where}&sortBy=${sortBy}&sortOrder=${sortOrder}&jobType=${jobType}`)
       .then(result => {
@@ -43,7 +43,7 @@ const Jobs = () => {
 
   const handleForm = (event: FormEvent) => {
     event.preventDefault()
-    searhJobs()
+    searchJobs()
   }
 
   const handleChange = (setChange: CallableFunction) => {
@@ -62,7 +62,7 @@ const Jobs = () => {
                 type='search'
                 id='what'
                 label='What'
-                placeholder='Job, employeer, key-word...'
+                placeholder='Job, key-word...'
                 value={what}
                 onChange={handleChange(setWhat)}
               />
@@ -72,7 +72,7 @@ const Jobs = () => {
                 id='where'
                 name='where'
                 label='Where'
-                placeholder='Country, state, city...'
+                placeholder='City, state...'
                 value={where}
                 onChange={handleChange(setWhere)}
               />

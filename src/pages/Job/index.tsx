@@ -61,7 +61,7 @@ const Job: React.FC = () => {
                           <Button type='primary' isBlock content='Apply Now' onClick={() => { if (job) history.push(`/apply/${job.id}`) }} />
                         </>
                       ) : (
-                        <p>You alredy applied to this job</p>
+                        <p>You already applied to this job</p>
                       ) }
                   </>
                 ) }
@@ -69,7 +69,7 @@ const Job: React.FC = () => {
             )
             : (
               <div className="apply">
-                <p>Click in the button below and make login in you accout to apply to this job.</p>
+                <p>Click in the button below and make login in you account to apply to this job.</p>
                 <Button type='primary' isBlock content='Login' onClick={() => { if (job) history.push(`/login?redirect=/apply/${job.id}`) }} />
               </div>
             ) }
@@ -99,7 +99,7 @@ const Job: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="employeer-header">
+                <div className="employer-header">
                   <div className="avatar">
                     <img src={job.user.avatar} alt={job.user.name}/>
                   </div>

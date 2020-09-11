@@ -83,7 +83,7 @@ const UpdateProfile: React.FC = () => {
       })
 
       swal({
-        text: 'Profile sucessfully updated.',
+        text: 'Profile successfully updated.',
         icon: 'success',
         className: 'profile-modal'
       })

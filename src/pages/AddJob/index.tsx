@@ -92,7 +92,7 @@ const AddJob: React.FC = () => {
     api.post('/jobs', { title, description, city, state, jobType, salary: Number(salary) })
       .then(async (result) => {
         swal({
-          text: 'Job has been sucessfully created.',
+          text: 'Job has been successfully created.',
           icon: 'success',
           className: 'job-created-modal'
         })

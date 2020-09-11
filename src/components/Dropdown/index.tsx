@@ -7,10 +7,10 @@ interface DropdownSection {
   id: number
   borderTop?: boolean
   borderBottom?: boolean
-  options: Array<DropdowOption>
+  options: Array<DropdownOption>
 }
 
-interface DropdowOption {
+interface DropdownOption {
   text: string
   value: string
   callback?: (value: string) => void

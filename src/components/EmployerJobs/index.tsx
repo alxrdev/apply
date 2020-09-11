@@ -13,7 +13,7 @@ interface Props {
   id: string
 }
 
-const EmployeerJobs: React.FC<Props> = ({ id }) => {
+const EmployerJobs: React.FC<Props> = ({ id }) => {
   const [jobsResponse, setJobsResponse] = useState<Array<Job>>([])
   const history = useHistory()
 
@@ -27,7 +27,7 @@ const EmployeerJobs: React.FC<Props> = ({ id }) => {
   }, [id])
 
   return (
-    <div className="employeer-jobs">
+    <div className="employer-jobs">
       <div className="top">
         <h1>My jobs</h1>
         <Button type='primary' content='Add new' onClick={() => history.push('/new-job')} />
@@ -42,4 +42,4 @@ const EmployeerJobs: React.FC<Props> = ({ id }) => {
   )
 }
 
-export default EmployeerJobs
+export default EmployerJobs

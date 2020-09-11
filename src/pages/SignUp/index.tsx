@@ -45,7 +45,7 @@ const SignUp = () => {
           const { password } = this.parent
           return password === value
         }),
-        role: Yup.string().required('The user role is required').oneOf(['user', 'employeer'])
+        role: Yup.string().required('The user role is required').oneOf(['user', 'employer'])
       })
 
       // validate the user input
@@ -152,7 +152,7 @@ const SignUp = () => {
             onChange={handleChange(setRole)}
             options={[
               { value: 'user', text: 'User' },
-              { value: 'employeer', text: 'Employeer' }
+              { value: 'employer', text: 'Employer' }
             ]}
             required
             error={errorMessage.role}

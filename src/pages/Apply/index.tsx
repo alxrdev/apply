@@ -20,7 +20,7 @@ const Apply: React.FC = () => {
 
   const [job, setJob] = useState<Job>()
 
-  const [resume, setResumse] = useState<File>()
+  const [resume, setResume] = useState<File>()
   const [error, setError] = useState('')
 
   const history = useHistory()
@@ -58,7 +58,7 @@ const Apply: React.FC = () => {
       { headers: { 'Content-Type': 'multipart/form-data' } })
       .then(res => {
         swal({
-          title: 'Your Application has been sucessfully submitted.',
+          title: 'Your Application has been successfully submitted.',
           text: 'Your application will be sent to the following company.',
           icon: 'success',
           className: 'apply-modal'
@@ -101,12 +101,12 @@ const Apply: React.FC = () => {
           { job && (
             <div className="apply-content">
               <div className="job-info">
-                <div className="employeer-avatar">
+                <div className="employer-avatar">
                   <img src={job.user.avatar} alt={job.title} />
                 </div>
-                <div className="title-employeer">
+                <div className="title-employer">
                   <h5>{ job.title }</h5>
-                  <span className="employeer">{ job.user.name }</span>
+                  <span className="employer">{ job.user.name }</span>
                   <span className="location">{ job.address.city }, { job.address.state }</span>
                 </div>
               </div>
@@ -117,7 +117,7 @@ const Apply: React.FC = () => {
                   <FileGroup
                     id='resume'
                     label='Choose a resume'
-                    onChange={setResumse}
+                    onChange={setResume}
                     error={error}
                   />
 

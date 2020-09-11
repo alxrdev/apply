@@ -27,7 +27,7 @@ const ForgotPassword = () => (
         <Button type='primary' isBlock={true} content='Send' />
       </form>
 
-      <p className="dont-have-account">Don&apos;t have an account? <Link to="signup">Sign up</Link></p>
+      <p className="dont-have-account">Don&apos;t have an account? <Link to="/signup">Sign up</Link></p>
     </SmallContainer>
   </div>
 )
