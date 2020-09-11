@@ -25,14 +25,16 @@ const Job: React.FC = () => {
   const history = useHistory()
 
   useEffect(() => {
-    api.get(`/jobs/${id}`)
-      .then(result => {
-        const data = result.data.data as JobEntity
-        setJob(data)
-      })
-      .catch(_ => history.push('/'))
+    if (id) {
+      api.get(`/jobs/${id}`)
+        .then(result => {
+          const data = result.data.data as JobEntity
+          setJob(data)
+        })
+        .catch(_ => history.push('/'))
+    }
 
-    if (user) {
+    if (user && id) {
       api.get(`/jobs/${id}/users/${user.id}`)
         .then(result => setIsApplied(true))
         .catch(_ => setIsApplied(false))
@@ -78,7 +80,7 @@ const Job: React.FC = () => {
             <div>
               <div className="job-details">
                 <div className="job-header">
-                  { user?.id === job.user.id && (
+                  { user && user.id === job.user.id && (
                     <span
                       className='edit-button'
                       onClick={() => history.push(`/edit-job/${job.id}`)}
@@ -143,7 +145,7 @@ const Job: React.FC = () => {
                 </div>
               </div>
 
-              { job.user.id === user!.id && (
+              { user && job.user.id === user.id && (
                 <UsersApplied id={job.id} />
               ) }
             </div>
