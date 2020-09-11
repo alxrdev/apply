@@ -64,7 +64,13 @@ export const AuthProvider: React.FC = ({ children }) => {
   }
 
   const storeUserAuth = (user: IAuthUser): void => {
-    setCookies('@Apply:user', user.id, { path: '/' })
+    const cookieExpiresDate = () => {
+      const date = new Date()
+      date.setDate(date.getDate() + 15)
+      return date
+    }
+
+    setCookies('@Apply:user', user.id, { path: '/', expires: cookieExpiresDate() })
   }
 
   return (
