@@ -18,7 +18,10 @@ import './styles.scss'
 const Job: React.FC = () => {
   const { user } = useAuth()
   const { id } = useParams()
+
   const [job, setJob] = useState<JobEntity | null>(null)
+  const [isApplied, setIsApplied] = useState(false)
+
   const history = useHistory()
 
   useEffect(() => {
@@ -28,7 +31,13 @@ const Job: React.FC = () => {
         setJob(data)
       })
       .catch(_ => history.push('/'))
-  }, [id])
+
+    if (user) {
+      api.get(`/jobs/${id}/users/${user.id}`)
+        .then(result => setIsApplied(true))
+        .catch(_ => setIsApplied(false))
+    }
+  }, [user, id])
 
   return (
     <div className="job">
@@ -43,8 +52,15 @@ const Job: React.FC = () => {
               <div className="apply">
                 { user.role === 'user' && (
                   <>
-                    <p>Click in the button below to apply to this job.</p>
-                    <Button type='primary' isBlock content='Apply Now' onClick={() => { if (job) history.push(`/apply/${job.id}`) }} />
+                    { !isApplied
+                      ? (
+                        <>
+                          <p>Click in the button below to apply to this job.</p>
+                          <Button type='primary' isBlock content='Apply Now' onClick={() => { if (job) history.push(`/apply/${job.id}`) }} />
+                        </>
+                      ) : (
+                        <p>You alredy applied to this job</p>
+                      ) }
                   </>
                 ) }
               </div>
