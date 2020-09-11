@@ -1,44 +1,89 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center">
+	<img alt="CRWN Clothing" src="https://raw.githubusercontent.com/alxrdev/crwn-clothing/master/src/assets/crown.svg" width="150px"><br>
+	CRWN Clothing
+</h1>
 
-## Available Scripts
+<h3 align="center">
+  E-commerce to sell products
+</h3>
 
-In the project directory, you can run:
+<p align="center">The best way to sell your products online!</p>
 
-### `yarn start`
+<p align="center">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/alxrdev/crwn-clothing?color=%23f58635">
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  <a href="https://www.linkedin.com/in/alxrdev/" target="_blank" rel="noopener noreferrer">
+    <img alt="Made by" src="https://img.shields.io/badge/made%20by-alex%20rodrigues%20moreira-%23f58635">
+  </a>
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/alxrdev/crwn-clothing?color=%23f58635">
 
-### `yarn test`
+  <a href="https://github.com/alxrdev/hcco/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/alxrdev/crwn-clothing?color=%23f58635">
+  </a>
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  <a href="https://github.com/alxrdev/hcco/issues">
+    <img alt="Repository issues" src="https://img.shields.io/github/issues/alxrdev/crwn-clothing?color=%23f58635">
+  </a>
 
-### `yarn build`
+  <img alt="GitHub" src="https://img.shields.io/github/license/alxrdev/crwn-clothing?color=%23f58635">
+</p>
+</br>
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<p align="center">
+  <img alt="Layout" src="https://i.imgur.com/1VD3Ond.gif">
+</p>
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## 💇🏻‍♂️ About the project
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This is a simple e-commerce site made with ReactJS and Typescript.
 
-### `yarn eject`
+## 🚀 Technologies
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Technologies that I used to develop this project
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- [ReactJS](https://reactjs.org/)
+- [Typescript](https://www.typescriptlang.org/)
+- [Firebase](https://firebase.google.com/)
+- [Redux](https://redux.js.org/)
+- [Redux Persist](https://github.com/rt2zz/redux-persist)
+- [Redux Reselect](https://github.com/reduxjs/reselect)
+- [React Router DOM](https://reacttraining.com/react-router/)
+- [React Stripe Checkout](https://github.com/azmenak/react-stripe-checkout)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 💻 Getting started
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Requirements
 
-## Learn More
+- Have NodeJS
+- Have a Firebase account
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**Clone the project and access the folder**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+$ git clone https://github.com/alxrdev/crwn-clothing.git
+```
+
+**Follow the steps below**
+```bash
+# Install the dependencies
+$ yarn
+
+# Start the client
+$ yarn start
+```
+
+**Create a '.env.local' file on the root folder and add your firebase configs**
+```
+
+REACT_APP_FIREBASE_API_KEY=
+REACT_APP_FIREBASE_AUTH_DOMAIN=
+REACT_APP_FIREBASE_DATABASE_URL=
+REACT_APP_FIREBASE_PROJECT_ID=
+REACT_APP_FIREBASE_STORAGE_BUCKET=
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID=
+REACT_APP_FIREBASE_APP_ID=
+
+```
+
+Feito com 💜 por Alex Rodrigues Moreira 👋 [Veja meu Linkedin](https://www.linkedin.com/in/alxrdev/)
