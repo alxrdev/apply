@@ -36,7 +36,7 @@
 
 ## 💇🏻‍♂️ About the project
 
-This is a jobs finder protal made with ReactJS and TypeScript
+This is a jobs finder portal made with ReactJS and TypeScript
 
 ## 🚀 Technologies
 
