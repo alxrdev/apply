@@ -34,6 +34,11 @@ export interface Address {
   city: string
 }
 
+export interface UserApplied {
+  user: User
+  resume: string
+}
+
 export interface APIErrorResponse {
   error_message: string
   error_status_code: number

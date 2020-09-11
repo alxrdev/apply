@@ -1,38 +1,43 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { MdWork, MdPublic, MdAttachment } from 'react-icons/md'
 import { FaQuoteLeft } from 'react-icons/fa'
 
+import { UserApplied as UserAppliedEntity } from '../../types'
+
 import './styles.scss'
 
-const UserApplied: React.FC = () => {
+interface Props {
+  user: UserAppliedEntity
+}
+
+const UserApplied: React.FC<Props> = ({ user: { user, resume } }) => {
   return (
     <div className="user-applied">
       <div className="main">
         <div className="avatar">
-          <img src='http://localhost:3333/api/avatar/1210eae2d6ddc62516d7-1598545131961.jpeg' alt='' />
+          <img src={user.avatar} alt={user.name} />
         </div>
 
         <div className="infos">
           <div className="name">
-            <h5>Alex Rodrigues Moreira</h5>
+            <h5>{ user.name }</h5>
           </div>
           <div className="occupation-area">
             <MdWork size={15} />
-            <span>UX Designer</span>
+            <span>{ user.headline }</span>
           </div>
           <div className="location">
             <MdPublic size={15} />
-            <span>São Mateus, ES</span>
+            <span>{ user.address }</span>
           </div>
           <div className="bio">
             <FaQuoteLeft size={15} />
-            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, tempora.</span>
+            <span>{ user.bio }</span>
           </div>
         </div>
       </div>
 
-      <a href='#' target='_blank' className="resume">
+      <a href={resume} target='_blank' rel="noreferrer" className="resume">
         <MdAttachment size={20} />
         <span>resume.pdf</span>
       </a>
