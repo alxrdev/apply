@@ -1,6 +1,6 @@
 import React, { useState, useEffect, FormEvent } from 'react'
 import { useHistory } from 'react-router-dom'
-import useQuery from '../../hooks/useQuery'
+import { useQuery } from '../../hooks'
 
 import api from '../../services/api'
 import { CollectionResponse, Job } from '../../types'

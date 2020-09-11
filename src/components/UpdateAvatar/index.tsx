@@ -3,7 +3,7 @@ import { MdPhotoCamera } from 'react-icons/md'
 import swal from 'sweetalert'
 import AvatarEditor from 'react-avatar-editor'
 
-import { useAuth } from '../../services/auth'
+import { useAuth } from '../../hooks'
 import api from '../../services/api'
 import { APIErrorResponse } from '../../types'
 

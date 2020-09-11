@@ -1,7 +1,7 @@
 import React, { useState, FormEvent } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 
-import { useAuth } from '../../services/auth'
+import { useAuth } from '../../hooks'
 
 import Header from '../../components/Header'
 import SmallContainer from '../../components/SmallContainer'

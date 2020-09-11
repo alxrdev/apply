@@ -3,7 +3,7 @@ import { useParams, useHistory } from 'react-router-dom'
 import { MdQueryBuilder, MdPublic, MdAttachMoney, MdWork, MdEdit } from 'react-icons/md'
 import parser from 'html-react-parser'
 
-import { useAuth } from '../../services/auth'
+import { useAuth } from '../../hooks'
 import { Job as JobEntity } from '../../types'
 import api from '../../services/api'
 

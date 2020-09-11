@@ -2,8 +2,7 @@ import React, { FormEvent, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import * as Yup from 'yup'
 
-import { useAuth } from '../../services/auth'
-import useQuery from '../../hooks/useQuery'
+import { useAuth, useQuery } from '../../hooks'
 import { APIErrorResponse } from '../../types'
 import getValidationError from '../../utils/getValidationError'
 

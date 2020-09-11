@@ -4,7 +4,7 @@ import swal from 'sweetalert'
 
 import { Job, APIErrorResponse } from '../../types'
 import api from '../../services/api'
-import { useAuth } from '../../services/auth'
+import { useAuth } from '../../hooks'
 
 import Header from '../../components/Header'
 import Container from '../../components/Container'

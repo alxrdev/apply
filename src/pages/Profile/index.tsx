@@ -1,5 +1,5 @@
 import React from 'react'
-import { useAuth } from '../../services/auth'
+import { useAuth } from '../../hooks'
 
 import Header from '../../components/Header'
 import Container from '../../components/Container'

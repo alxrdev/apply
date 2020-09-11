@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { FiLogOut, FiUser } from 'react-icons/fi'
 
-import { useAuth } from '../../services/auth'
+import { useAuth } from '../../hooks'
 
 import Dropdown from '../Dropdown'
 

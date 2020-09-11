@@ -5,7 +5,7 @@ import * as Yup from 'yup'
 import getValidationError from '../../utils/getValidationError'
 import api from '../../services/api'
 import { APIErrorResponse } from '../../types'
-import { useAuth } from '../../services/auth'
+import { useAuth } from '../../hooks'
 
 import SimpleHeader from '../../components/SimpleHeader'
 import SmallContainer from '../../components/SmallContainer'

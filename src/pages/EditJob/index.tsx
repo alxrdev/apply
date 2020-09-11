@@ -5,7 +5,7 @@ import swal from 'sweetalert'
 import CKEditor from '@ckeditor/ckeditor5-react'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
 
-import { useAuth } from '../../services/auth'
+import { useAuth } from '../../hooks'
 import { Job, APIErrorResponse } from '../../types'
 import api from '../../services/api'
 import getValidationError from '../../utils/getValidationError'

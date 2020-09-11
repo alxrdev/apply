@@ -2,7 +2,7 @@ import React, { FormEvent, useState, useEffect } from 'react'
 import * as Yup from 'yup'
 import swal from 'sweetalert'
 
-import { useAuth } from '../../services/auth'
+import { useAuth } from '../../hooks'
 import api from '../../services/api'
 import { User } from '../../types'
 import getValidationError from '../../utils/getValidationError'

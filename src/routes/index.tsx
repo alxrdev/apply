@@ -29,8 +29,7 @@ const Routes = () => (
 
       <ProtectedRoute path='/apply/:id' component={Apply} />
       <ProtectedRoute path='/profile' exact component={Profile} />
-      <Route path='/profile/edit' component={EditProfile} />
-      {/* <ProtectedRoute path='/profile/edit' component={EditProfile} /> */}
+      <ProtectedRoute path='/profile/edit' component={EditProfile} />
 
       <ProtectedRoute path='/new-job' component={AddJob} />
       <ProtectedRoute path='/edit-job/:id' component={EditJob} />

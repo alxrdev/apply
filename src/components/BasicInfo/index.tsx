@@ -4,7 +4,7 @@ import { MdWork, MdPublic, MdEdit } from 'react-icons/md'
 import { FaQuoteLeft } from 'react-icons/fa'
 
 import { User } from '../../types'
-import { useAuth } from '../../services/auth'
+import { useAuth } from '../../hooks'
 import api from '../../services/api'
 
 import SmallContainer from '../SmallContainer'
