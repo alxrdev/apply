@@ -9,6 +9,7 @@ import InputGroup from '../../components/InputGroup'
 import Button from '../../components/Button'
 
 import './styles.scss'
+import logoImage from '../../assets/img/logo.svg'
 
 const Home = () => {
   const { user } = useAuth()
@@ -39,7 +40,9 @@ const Home = () => {
       <Header />
 
       <SmallContainer>
-        <h1 className='title'>Find the job of your dreans</h1>
+        <img src={logoImage} alt='Apply' className="logo"/>
+
+        <h1 className='title'>Find the job of your dreams</h1>
 
         <form onSubmit={handleForm}>
           <InputGroup
@@ -49,7 +52,7 @@ const Home = () => {
             label='What'
             value={what}
             onChange={handleChange(setWhat)}
-            placeholder='Job, employeer, key-word...'
+            placeholder='Job, key-word...'
           />
 
           <InputGroup
@@ -59,7 +62,7 @@ const Home = () => {
             label='Where'
             value={where}
             onChange={handleChange(setWhere)}
-            placeholder='Country, state, city...'
+            placeholder='City, state...'
           />
 
           <Button type='primary' isBlock={true} content='Search a Job' />
@@ -68,7 +71,7 @@ const Home = () => {
         { !user && (
           <div className='actions'>
             <p className='looking-for-a-job'>Are you looking for a job? Apply for one. <Link to='/login'>Log In</Link></p>
-            <p className='are-you-employeer'>Are you an employeer? Advertise your job here. <Link to='/signup'>Sign up</Link></p>
+            <p className='are-you-employer'>Are you an employer? Advertise your job here. <Link to='/signup'>Sign up</Link></p>
           </div>
         ) }
       </SmallContainer>
