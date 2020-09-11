@@ -4,6 +4,7 @@ import swal from 'sweetalert'
 
 import { Job, APIErrorResponse } from '../../types'
 import api from '../../services/api'
+import { useAuth } from '../../services/auth'
 
 import Header from '../../components/Header'
 import Container from '../../components/Container'
@@ -15,22 +16,29 @@ import './styles.scss'
 
 const Apply: React.FC = () => {
   const { id } = useParams()
+  const { user } = useAuth()
+
   const [job, setJob] = useState<Job>()
-  const history = useHistory()
 
   const [resume, setResumse] = useState<File>()
   const [error, setError] = useState('')
 
+  const history = useHistory()
+
   useEffect(() => {
-    if (id) {
+    if (id && user) {
       api.get(`/jobs/${id}`)
         .then(response => {
           const data = response.data.data as Job
           setJob(data)
         })
         .catch(_ => history.push('/'))
+
+      api.get(`/jobs/${id}/users/${user.id}`)
+        .then(_ => history.push('/'))
+        .catch(_ => {})
     }
-  }, [id])
+  }, [user, id])
 
   function handleForm (event: FormEvent) {
     event.preventDefault()
