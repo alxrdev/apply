@@ -153,7 +153,7 @@ const EditJob: React.FC = () => {
         </div>
 
         <div className="edit-job-content">
-          <h1>Add a New Job</h1>
+          <h1>Edit Job</h1>
 
           <form onSubmit={handleForm}>
             { errorMessage.globalError !== '' ? (<p className='global-error'>{errorMessage.globalError}</p>) : null }
