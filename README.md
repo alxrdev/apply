@@ -36,7 +36,7 @@
 
 ## 💇🏻‍♂️ About the project
 
-This is a jobs finder portal made with ReactJS and TypeScript
+This is a jobs finder portal made with ReactJS and TypeScript consuming the [Apply Api](https://github.com/alxrdev/apply-api/).
 
 ## 🚀 Technologies
 
