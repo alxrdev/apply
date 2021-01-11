@@ -1,9 +1,10 @@
-import React, { useState, useEffect, FormEvent } from 'react'
+import React, { useState, useEffect, FormEvent, useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useQuery } from '../../hooks'
 
 import api from '../../services/api'
 import { CollectionResponse, Job } from '../../types'
+import JobsListContext from '../../providers/JobsList/JobsListContext'
 
 import Header from '../../components/Header'
 import SmallContainer from '../../components/SmallContainer'
@@ -22,29 +23,31 @@ const Jobs = () => {
   const [sortBy, setSortBy] = useState(query.get('sortBy') ?? '')
   const [sortOrder, setSortOrder] = useState(query.get('sortOrder') ?? '')
   const [jobType, setJobType] = useState(query.get('jobType') ?? '')
-  const [searching, setSearching] = useState(true)
 
-  const [jobsResponse, setJobsResponse] = useState<CollectionResponse<Job>>()
+  const { jobs, setJobs, isSearching, setIsSearching } = useContext(JobsListContext)
 
   const history = useHistory()
 
   useEffect(() => {
-    history.push(`/jobs?what=${what}&where=${where}&sortBy=${sortBy}&sortOrder=${sortOrder}&jobType=${jobType}`)
-    api.get(`/jobs?what=${what}&where=${where}&sortBy=${sortBy}&sortOrder=${sortOrder}&jobType=${jobType}`)
+    if (isSearching || jobs == null) {
+      // history.push(`/jobs?what=${what}&where=${where}&sortBy=${sortBy}&sortOrder=${sortOrder}&jobType=${jobType}`)
+      api.get(`/jobs?what=${what}&where=${where}&sortBy=${sortBy}&sortOrder=${sortOrder}&jobType=${jobType}`)
       .then(result => {
         const data = result.data as CollectionResponse<Job>
-        setJobsResponse(data)
-        setSearching(false)
+        setJobs(data)
+        setIsSearching(false)
       })
       .catch(_ => {
         history.push('/')
-        setSearching(false)
-      })// eslint-disable-next-line
-  }, [sortBy, sortOrder, jobType, searching, history]) 
+        setIsSearching(false)
+      })
+    }
+    // eslint-disable-next-line
+  }, [sortBy, sortOrder, jobType, isSearching, history]) 
 
   const handleForm = (event: FormEvent) => {
     event.preventDefault()
-    setSearching(!searching)
+    setIsSearching(true)
   }
 
   const handleChange = (setChange: CallableFunction) => {
@@ -95,7 +98,10 @@ const Jobs = () => {
                     ]
                   }
                 ]}
-                callback={handleChange(setSortBy)}
+                callback={handleChange((value: string) => {
+                  setSortBy(value)
+                  setIsSearching(true)
+                })}
               />
 
               <Dropdown
@@ -111,7 +117,10 @@ const Jobs = () => {
                     ]
                   }
                 ]}
-                callback={handleChange(setSortOrder)}
+                callback={handleChange((value: string) => {
+                  setSortOrder(value)
+                  setIsSearching(true)
+                })}
               />
 
               <Dropdown
@@ -130,7 +139,10 @@ const Jobs = () => {
                     ]
                   }
                 ]}
-                callback={handleChange(setJobType)}
+                callback={handleChange((value: string) => {
+                  setJobType(value)
+                  setIsSearching(true)
+                })}
               />
             </div>
           </div>
@@ -138,7 +150,7 @@ const Jobs = () => {
       </Header>
 
       <SmallContainer>
-        { jobsResponse && (<JobsDirectory jobsResponse={jobsResponse} />) }
+        { jobs && (<JobsDirectory jobsResponse={jobs} />) }
       </SmallContainer>
     </div>
   )

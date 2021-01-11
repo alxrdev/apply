@@ -20,7 +20,7 @@ const Job: React.FC = () => {
   const { id } = useParams()
 
   const [job, setJob] = useState<JobEntity | null>(null)
-  const [isApplied, setIsApplied] = useState(false)
+  const [isApplied, setIsApplied] = useState(true)
 
   const history = useHistory()
 

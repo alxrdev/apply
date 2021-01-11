@@ -1,7 +1,8 @@
-import React, { useState, FormEvent } from 'react'
+import React, { useState, FormEvent, useContext } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 
 import { useAuth } from '../../hooks'
+import JobsListContext from '../../providers/JobsList/JobsListContext'
 
 import Header from '../../components/Header'
 import SmallContainer from '../../components/SmallContainer'
@@ -18,6 +19,7 @@ const Home = () => {
   const [where, setWhere] = useState('')
 
   const history = useHistory()
+  const { setIsSearching, setJobs } = useContext(JobsListContext)
 
   const handleForm = (event: FormEvent) => {
     event.preventDefault()
@@ -25,6 +27,8 @@ const Home = () => {
     if (what === '') {
       alert('Please, type a job title.')
     } else {
+      setJobs(null)
+      setIsSearching(true)
       history.push(`/jobs?what=${what}&where=${where}`)
     }
   }
