@@ -22,28 +22,29 @@ const Jobs = () => {
   const [sortBy, setSortBy] = useState(query.get('sortBy') ?? '')
   const [sortOrder, setSortOrder] = useState(query.get('sortOrder') ?? '')
   const [jobType, setJobType] = useState(query.get('jobType') ?? '')
+  const [searching, setSearching] = useState(true)
 
   const [jobsResponse, setJobsResponse] = useState<CollectionResponse<Job>>()
 
   const history = useHistory()
 
   useEffect(() => {
-    searchJobs()
-  }, [sortBy, sortOrder, jobType])
-
-  function searchJobs () {
     history.push(`/jobs?what=${what}&where=${where}&sortBy=${sortBy}&sortOrder=${sortOrder}&jobType=${jobType}`)
     api.get(`/jobs?what=${what}&where=${where}&sortBy=${sortBy}&sortOrder=${sortOrder}&jobType=${jobType}`)
       .then(result => {
         const data = result.data as CollectionResponse<Job>
         setJobsResponse(data)
+        setSearching(false)
       })
-      .catch(_ => history.push('/'))
-  }
+      .catch(_ => {
+        history.push('/')
+        setSearching(false)
+      })// eslint-disable-next-line
+  }, [sortBy, sortOrder, jobType, searching, history]) 
 
   const handleForm = (event: FormEvent) => {
     event.preventDefault()
-    searchJobs()
+    setSearching(!searching)
   }
 
   const handleChange = (setChange: CallableFunction) => {

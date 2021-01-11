@@ -20,7 +20,7 @@ const UsersApplied: React.FC<Props> = ({ id }) => {
         setUsers(data)
       })
       .catch(_ => console.log('Error'))
-  }, [])
+  }, [id])
 
   return (
     <div className="users-applied">

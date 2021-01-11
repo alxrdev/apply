@@ -62,7 +62,7 @@ const EditJob: React.FC = () => {
         })
         .catch(_ => history.push('/'))
     }
-  }, [id, user])
+  }, [id, user, history])
 
   const validateForm = async (): Promise<boolean> => {
     try {

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import { MdPhotoCamera } from 'react-icons/md'
 import swal from 'sweetalert'
 import AvatarEditor from 'react-avatar-editor'

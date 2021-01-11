@@ -37,7 +37,7 @@ const UserApplied: React.FC<Props> = ({ user: { user, resume } }) => {
         </div>
       </div>
 
-      <a href={resume} target='_blank' rel="noreferrer" className="resume">
+      <a href={resume} target='_blank' rel="noopener noreferrer" className="resume">
         <MdAttachment size={20} />
         <span>resume.pdf</span>
       </a>

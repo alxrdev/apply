@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 
 import api from '../api'
 
@@ -15,24 +15,36 @@ export const AuthProvider: React.FC = ({ children }) => {
   const [cookies, setCookies, removeCookies] = useCookies(['@Apply:user'])
   const [user, setUser] = useState<IAuthUser | null>(null)
 
-  useEffect(() => {
-    const userAuth = cookies['@Apply:user']
-
-    if (userAuth) {
-      console.log('Trying to authenticate user...')
-      api.post('/refresh-token')
-        .then(result => {
-          console.log('User authenticated...')
-          const response = result.data.data as APIAuthResponse
-          setUser(response.user)
-          storeUserAuth(response.user)
-        })
-        .catch(_ => {
-          setUser(null)
-          console.log('User not authenticated...')
-        })
+  const storeUserAuth = useCallback((user: IAuthUser): void => {
+    const cookieExpiresDate = () => {
+      const date = new Date()
+      date.setDate(date.getDate() + 15)
+      return date
     }
-  }, [])
+
+    setCookies('@Apply:user', user.id, { path: '/', expires: cookieExpiresDate() })
+  }, [setCookies])
+
+  useEffect(() => {
+    if (user == null) {
+      const userAuth = cookies['@Apply:user']
+
+      if (userAuth) {
+        console.log('Trying to authenticate user...')
+        api.post('/refresh-token')
+          .then(result => {
+            console.log('User authenticated...')
+            const response = result.data.data as APIAuthResponse
+            setUser(response.user)
+            storeUserAuth(response.user)
+          })
+          .catch(_ => {
+            setUser(null)
+            console.log('User not authenticated...')
+          })
+      }
+    }
+  }, [user, cookies, storeUserAuth])
 
   const logIn = async (email: string, password: string): Promise<APIErrorResponse | void> => {
     try {
@@ -61,16 +73,6 @@ export const AuthProvider: React.FC = ({ children }) => {
   const logOut = (): void => {
     removeCookies('@Apply:user', { path: '/' })
     setUser(null)
-  }
-
-  const storeUserAuth = (user: IAuthUser): void => {
-    const cookieExpiresDate = () => {
-      const date = new Date()
-      date.setDate(date.getDate() + 15)
-      return date
-    }
-
-    setCookies('@Apply:user', user.id, { path: '/', expires: cookieExpiresDate() })
   }
 
   return (

@@ -27,7 +27,7 @@ const BasicInfo: React.FC<Props> = ({ id }) => {
         setUser(data)
       })
       .catch(error => { console.log(error) })
-  }, [])
+  }, [id])
 
   return (
     <SmallContainer>

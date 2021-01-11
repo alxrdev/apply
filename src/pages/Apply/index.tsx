@@ -38,7 +38,7 @@ const Apply: React.FC = () => {
         .then(_ => history.push('/'))
         .catch(_ => {})
     }
-  }, [user, id])
+  }, [user, id, history])
 
   function handleForm (event: FormEvent) {
     event.preventDefault()

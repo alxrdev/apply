@@ -39,7 +39,7 @@ const Job: React.FC = () => {
         .then(result => setIsApplied(true))
         .catch(_ => setIsApplied(false))
     }
-  }, [user, id])
+  }, [user, id, history])
 
   return (
     <div className="job">
