@@ -38,6 +38,8 @@
 
 This is a jobs finder portal made with ReactJS and TypeScript consuming the [Apply Api](https://github.com/alxrdev/apply-api/).
 
+Live demo: [https://apply-virid.vercel.app/](https://apply-virid.vercel.app/)
+
 ## 🚀 Technologies
 
 Technologies that I used to develop this project
