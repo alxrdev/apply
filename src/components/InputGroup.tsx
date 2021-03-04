@@ -1,54 +1,29 @@
-import { Flex, Input, InputProps, Text } from '@chakra-ui/react'
+import { FormControl, FormErrorMessage, FormLabel, Input, InputProps } from '@chakra-ui/react'
 import { ChangeEvent } from 'react'
 
 interface InputGroupProps extends Omit<InputProps, 'onChange'> {
   label: string
   id: string
-  className?: string
-  onChange: (value: string) => void
+  onChange?: (value: string) => void
   error?: string
 }
 
-export default function InputGroup ({ id, label, onChange, error, ...otherProps }: InputGroupProps) {
-  return (
-    <Flex
-      position="relative"
-      width="100%"
-      flexDirection="column"
-      marginBottom="20px"
-    >
-      <Text
-        as="label"
-        color="brand.1000"
-        fontSize="sm"
-        fontWeight="700"
-        htmlFor={id}
-      >
-        { label }
-      </Text>
+export default function InputGroup ({ id, label, error, onChange, ...otherProps }: InputGroupProps) {
+  const isInvalid = !!((error && error !== ''))
 
+  return (
+    <FormControl isInvalid={isInvalid} id={id} marginBottom="10px">
+      <FormLabel color="brand.1000" fontWeight="700">{label}</FormLabel>
       <Input
-        id={id}
-        width="100%"
-        height="40px"
-        maxHeight="40px"
-        padding="1rem 1.3rem"
-        marginTop="5px"
-        fontSize="sm"
-        borderRadius="30px"
-        borderStyle="solid"
-        borderColor={!error ? 'brand.1300' : '#db183f'}
-        transition="ease 0.3s"
+        borderColor="brand.1300"
+        _hover={{ borderColor: 'brand.800' }}
         _focus={{ borderColor: 'brand.800' }}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
           if (onChange !== undefined) onChange(event.target.value)
         }}
-        { ...otherProps }
+       { ...otherProps }
       />
-
-      { error && (
-        <Text marginTop="10px" color="#db183f" fontSize="sm">{ error }</Text>
-      ) }
-    </Flex>
+      <FormErrorMessage>{error}</FormErrorMessage>
+    </FormControl>
   )
 }

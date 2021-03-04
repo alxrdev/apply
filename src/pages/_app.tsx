@@ -1,5 +1,3 @@
-// import { GetServerSideProps } from 'next'
-
 import { AuthProvider } from '../contexts/AuthContext'
 import ThemeContainer from '../components/ThemeContainer'
 
@@ -21,15 +19,5 @@ function MyApp ({ Component, pageProps }: MyAppProps) {
     </AuthProvider>
   )
 }
-
-// export const getServerSideProps: GetServerSideProps = async (ctx) => {
-//   const { applyAuthUser } = ctx.req.cookies
-
-//   return {
-//     props: {
-//       userId: applyAuthUser
-//     }
-//   }
-// }
 
 export default MyApp
