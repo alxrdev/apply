@@ -39,6 +39,7 @@ export default function HomeSearchForm () {
           gridTemplateColumns={{ base: '1fr', lg: '1fr 1fr' }}
           gridTemplateRows={{ base: '1fr 1fr', lg: '1fr' }}
           gridGap={{ lg: '10px' }}
+          marginBottom="15px"
         >
           <InputGroup
             type='search'
