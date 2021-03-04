@@ -1,7 +1,35 @@
-import '../styles/globals.css'
+// import { GetServerSideProps } from 'next'
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+import { AuthProvider } from '../contexts/AuthContext'
+import ThemeContainer from '../components/ThemeContainer'
+
+import '../styles/globals.scss'
+
+interface MyAppProps {
+  Component: any
+  pageProps: any
 }
+
+function MyApp ({ Component, pageProps }: MyAppProps) {
+  return (
+    <AuthProvider userId="1">
+      <ThemeContainer>
+        <div className="page">
+          <Component {...pageProps} />
+        </div>
+      </ThemeContainer>
+    </AuthProvider>
+  )
+}
+
+// export const getServerSideProps: GetServerSideProps = async (ctx) => {
+//   const { applyAuthUser } = ctx.req.cookies
+
+//   return {
+//     props: {
+//       userId: applyAuthUser
+//     }
+//   }
+// }
 
 export default MyApp
