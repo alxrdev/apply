@@ -4,20 +4,21 @@ import { ChangeEvent } from 'react'
 interface InputGroupProps extends Omit<InputProps, 'onChange'> {
   label: string
   id: string
+  groupMarginBottom?: string
   onChange?: (value: string) => void
   error?: string
 }
 
-export default function InputGroup ({ id, label, error, onChange, ...otherProps }: InputGroupProps) {
+export default function InputGroup ({ id, label, error, onChange, groupMarginBottom = '10px', ...otherProps }: InputGroupProps) {
   const isInvalid = !!((error && error !== ''))
 
   return (
-    <FormControl isInvalid={isInvalid} id={id} marginBottom="10px">
-      <FormLabel color="brand.1000" fontWeight="700">{label}</FormLabel>
+    <FormControl isInvalid={isInvalid} id={id} marginBottom={groupMarginBottom}>
+      <FormLabel color="brand.200" fontWeight="700">{label}</FormLabel>
       <Input
-        borderColor="brand.1300"
-        _hover={{ borderColor: 'brand.800' }}
-        _focus={{ borderColor: 'brand.800' }}
+        borderColor="brand.500"
+        _hover={{ borderColor: 'brand.100' }}
+        _focus={{ borderColor: 'brand.100' }}
         onChange={(event: ChangeEvent<HTMLInputElement>) => {
           if (onChange !== undefined) onChange(event.target.value)
         }}

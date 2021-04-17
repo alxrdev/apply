@@ -1,9 +1,8 @@
-import { FormEvent, useContext, useState } from 'react'
+import { FormEvent, useState } from 'react'
 import { useRouter } from 'next/router'
 
-import InputGroup from '../components/InputGroup'
-import CustomButton from '../components/CustomButton'
-import { JobsListContext } from '../contexts/JobsListContext'
+import InputGroup from '../form/InputGroup'
+import CustomButton from '../ui/CustomButton'
 
 import { Box, Grid } from '@chakra-ui/react'
 
@@ -12,7 +11,6 @@ export default function HomeSearchForm () {
   const [where, setWhere] = useState('')
 
   const router = useRouter()
-  const { setIsSearching, setJobs } = useContext(JobsListContext)
 
   const handleForm = (event: FormEvent) => {
     event.preventDefault()
@@ -20,8 +18,6 @@ export default function HomeSearchForm () {
     if (what === '') {
       alert('Please, type a job title.')
     } else {
-      setJobs(null)
-      setIsSearching(true)
       router.push(`/jobs?what=${what}&where=${where}`)
     }
   }

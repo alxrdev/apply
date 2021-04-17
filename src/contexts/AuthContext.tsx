@@ -14,14 +14,15 @@ export const AuthContext = createContext<IAuthContext>({} as IAuthContext)
 
 interface AuthProviderProps {
   children: ReactNode
-  userId?: string
 }
 
-export function AuthProvider ({ children, userId }: AuthProviderProps) {
+export function AuthProvider ({ children }: AuthProviderProps) {
   const [user, setUser] = useState<IAuthUser | null>(null)
 
   useEffect(() => {
-    if (userId) {
+    const { applyAuthUser } = Cookies.get()
+
+    if (applyAuthUser) {
       console.log('Trying to authenticate user...')
       api.post('/refresh-token')
         .then(result => {
@@ -30,10 +31,13 @@ export function AuthProvider ({ children, userId }: AuthProviderProps) {
           setUser(response.user)
           storeUserAuth(response.user)
         })
-        .catch(_ => {
+        .catch(error => {
+          console.log(error.response.data)
           setUser(null)
           console.log('User not authenticated...')
         })
+    } else {
+      console.log('User not authenticated...')
     }
   }, [])
 

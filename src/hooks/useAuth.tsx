@@ -1,8 +1,13 @@
-import { useContext } from 'react'
+import { useSession } from 'next-auth/client'
 
-import { AuthContext } from '../contexts/AuthContext'
+import { IAuthUser } from '../types'
 
 export default function useAuth () {
-  const context = useContext(AuthContext)
-  return context
+  const [session, loading] = useSession()
+
+  return {
+    user: (!session) ? null : session.user as IAuthUser,
+    accessToken: (!session) ? '' : session.accessToken,
+    loading
+  }
 }

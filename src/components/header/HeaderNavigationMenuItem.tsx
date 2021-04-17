@@ -14,7 +14,7 @@ export default function HeaderNavigationMenuItem ({ text, href }: MenuItemProps)
           as="span"
           padding="0.5rem 1rem"
           marginLeft="10px"
-          color="brand.700"
+          color="brand.200"
           fontSize="md"
           textDecoration="none"
           cursor="pointer"
@@ -22,7 +22,7 @@ export default function HeaderNavigationMenuItem ({ text, href }: MenuItemProps)
           borderBottomStyle="solid"
           borderBottomColor="transparent"
           _hover={{
-            borderBottomColor: 'brand.800'
+            borderBottomColor: 'brand.100'
           }}
         >
           { text }
